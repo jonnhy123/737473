@@ -29,28 +29,12 @@ public class PrincipalBase extends JFrame {
 	protected JTabbedPane tabbedPane;
 
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					PrincipalBase frame = new PrincipalBase();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
 	 * Create the frame.
 	 */
 	public PrincipalBase() {
 		setTitle("Tela Principal");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 647, 475);
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
