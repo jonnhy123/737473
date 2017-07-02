@@ -17,6 +17,7 @@ public class Principal extends PrincipalBase{
 	
 	public Principal() {
 		super();
+		setTitle("MASTER10 TECNOLOGIA");
 		configurarBotoes();
 	}
 	
@@ -44,6 +45,7 @@ public class Principal extends PrincipalBase{
 			wrapper.setFecharPainel(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					tabbedPane.remove(wrapper);
+					instanciaUnica = null;
 				}
 			});
 			tabbedPane.addTab("Clientes", wrapper);
