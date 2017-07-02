@@ -19,7 +19,7 @@ import javax.swing.JButton;
  * 2 de jul de 2017 - 00:52:06 
  */
 public class PainelOrcamentoBase extends JPanel {
-	protected JTextField textField;
+	protected JTextField txtf;
 	protected JTextField textField_1;
 	protected JTextField textField_2;
 	protected JTextField textField_3;
@@ -64,14 +64,17 @@ public class PainelOrcamentoBase extends JPanel {
 		gbc_lblCdigo.gridy = 0;
 		panel_Produtos.add(lblCdigo, gbc_lblCdigo);
 		
-		textField = new JTextField();
-		GridBagConstraints gbc_textField = new GridBagConstraints();
-		gbc_textField.insets = new Insets(0, 0, 5, 0);
-		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField.gridx = 1;
-		gbc_textField.gridy = 0;
-		panel_Produtos.add(textField, gbc_textField);
-		textField.setColumns(10);
+		txtf = new JTextField();
+		txtf.setName("");
+		txtf.setActionCommand("");
+		txtf.setToolTipText("");
+		GridBagConstraints gbc_txtf = new GridBagConstraints();
+		gbc_txtf.anchor = GridBagConstraints.WEST;
+		gbc_txtf.insets = new Insets(0, 0, 5, 0);
+		gbc_txtf.gridx = 1;
+		gbc_txtf.gridy = 0;
+		panel_Produtos.add(txtf, gbc_txtf);
+		txtf.setColumns(10);
 		
 		JLabel lblProduto = new JLabel("Produto");
 		GridBagConstraints gbc_lblProduto = new GridBagConstraints();
@@ -100,15 +103,15 @@ public class PainelOrcamentoBase extends JPanel {
 		
 		textField_2 = new JTextField();
 		GridBagConstraints gbc_textField_2 = new GridBagConstraints();
+		gbc_textField_2.anchor = GridBagConstraints.WEST;
 		gbc_textField_2.insets = new Insets(0, 0, 5, 0);
-		gbc_textField_2.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textField_2.gridx = 1;
 		gbc_textField_2.gridy = 2;
 		panel_Produtos.add(textField_2, gbc_textField_2);
 		textField_2.setColumns(10);
 		
 		JPanel panel_Clientes = new JPanel();
-		panel_Clientes.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Cliente", TitledBorder.LEADING, TitledBorder.TOP, null, Color.RED));
+		panel_Clientes.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Clientes", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(255, 0, 0)));
 		GridBagConstraints gbc_panel_Clientes = new GridBagConstraints();
 		gbc_panel_Clientes.insets = new Insets(0, 0, 5, 0);
 		gbc_panel_Clientes.fill = GridBagConstraints.BOTH;
@@ -132,8 +135,8 @@ public class PainelOrcamentoBase extends JPanel {
 		
 		textField_3 = new JTextField();
 		GridBagConstraints gbc_textField_3 = new GridBagConstraints();
+		gbc_textField_3.anchor = GridBagConstraints.WEST;
 		gbc_textField_3.insets = new Insets(0, 0, 5, 0);
-		gbc_textField_3.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textField_3.gridx = 1;
 		gbc_textField_3.gridy = 0;
 		panel_Clientes.add(textField_3, gbc_textField_3);
@@ -166,12 +169,12 @@ public class PainelOrcamentoBase extends JPanel {
 		
 		textField_5 = new JTextField();
 		GridBagConstraints gbc_textField_5 = new GridBagConstraints();
+		gbc_textField_5.anchor = GridBagConstraints.WEST;
 		gbc_textField_5.insets = new Insets(0, 0, 5, 0);
-		gbc_textField_5.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textField_5.gridx = 1;
 		gbc_textField_5.gridy = 2;
 		panel_Clientes.add(textField_5, gbc_textField_5);
-		textField_5.setColumns(10);
+		textField_5.setColumns(15);
 		
 		JLabel lblQtdProdutos = new JLabel("Qtd produtos:");
 		GridBagConstraints gbc_lblQtdProdutos = new GridBagConstraints();
@@ -183,7 +186,7 @@ public class PainelOrcamentoBase extends JPanel {
 		
 		textField_6 = new JTextField();
 		GridBagConstraints gbc_textField_6 = new GridBagConstraints();
-		gbc_textField_6.fill = GridBagConstraints.HORIZONTAL;
+		gbc_textField_6.anchor = GridBagConstraints.WEST;
 		gbc_textField_6.gridx = 1;
 		gbc_textField_6.gridy = 3;
 		panel_Clientes.add(textField_6, gbc_textField_6);

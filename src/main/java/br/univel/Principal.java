@@ -13,7 +13,8 @@ import javax.swing.JOptionPane;
  */
 public class Principal extends PrincipalBase{
 
-	private static PainelCadCliente instanciaUnica = null;
+	private static PainelCadCliente instanciaUnica_C = null;
+	private static PainelOrcamentos instanciaUnica_O = null;
 	
 	public Principal() {
 		super();
@@ -32,20 +33,45 @@ public class Principal extends PrincipalBase{
 				cadastrarCliente();
 			}
 		});
+		super.mntmRealizarOramento.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				realizarOrcamento();
+			}
+		});
+	}
+	
+	protected void realizarOrcamento() {
+		//Aplicando padrão Singleton
+		if (instanciaUnica_O == null) {
+			instanciaUnica_O = new PainelOrcamentos();
+			final PainelWrapper wrapper = new PainelWrapper();
+			wrapper.setConteudo(instanciaUnica_O);
+			wrapper.setTitulo("Realizar orçamento");
+			
+			wrapper.setFecharPainel(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					tabbedPane.remove(wrapper);
+					instanciaUnica_O = null;
+				}
+			});
+			tabbedPane.addTab("Orçamento", wrapper);
+		}else{
+			JOptionPane.showMessageDialog(null, "Proibido dublicar aba.");
+		}
 	}
 
 	protected void cadastrarCliente() {
 		//Aplicando padrão Singleton
-		if (instanciaUnica == null) {
-			instanciaUnica = new PainelCadCliente();
+		if (instanciaUnica_C == null) {
+			instanciaUnica_C = new PainelCadCliente();
 			final PainelWrapper wrapper = new PainelWrapper();
-			wrapper.setConteudo(instanciaUnica);
+			wrapper.setConteudo(instanciaUnica_C);
 			wrapper.setTitulo("Cadastro de clientes");
 			
 			wrapper.setFecharPainel(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					tabbedPane.remove(wrapper);
-					instanciaUnica = null;
+					instanciaUnica_C = null;
 				}
 			});
 			tabbedPane.addTab("Clientes", wrapper);
