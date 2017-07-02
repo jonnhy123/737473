@@ -12,14 +12,10 @@ import javax.swing.table.AbstractTableModel;
  */
 public class ProdutoModelo extends AbstractTableModel{
 
-	private static List<Produto> listaProdutoDeClasse;
-	
+	private static List<Produto> listaProdutoDeClasse = new ArrayList<>();
+
 	public ProdutoModelo(List<Produto> listaProdutoContrutor) {
-		if (listaProdutoDeClasse == null) {
-			listaProdutoDeClasse = new ArrayList<Produto>();
-		}else{
 			listaProdutoDeClasse = listaProdutoContrutor;
-		}
 	}
 
 	public int getColumnCount() {
@@ -30,6 +26,20 @@ public class ProdutoModelo extends AbstractTableModel{
 		return listaProdutoDeClasse.size();
 	}
 
+	@Override
+	public String getColumnName(int column) {
+		switch (column) {
+		case 0:
+			return "ID";
+		case 1:
+			return "Descrição";
+		case 2:
+			return "Valor Dolár";
+		}
+		return super.getColumnName(column);
+	}
+
+	
 	public Object getValueAt(int row, int column) {
 
 		Produto p = listaProdutoDeClasse.get(row);
@@ -49,13 +59,16 @@ public class ProdutoModelo extends AbstractTableModel{
 	public void salvar(List<Produto> listaProduto) {
 		ProdutoDao dao = new ProdutoDao();
 		
-		List<Produto> minhaLista = new ArrayList<Produto>();
+		List<Produto> minhaLista = new ArrayList<>();
 
 		for (int i = 0; i < listaProduto.size(); i++) {
 			Produto p = new Produto();
 			Long id = listaProduto.get(i).getId();
 			String descricao = listaProduto.get(i).getDescricao();
 			BigDecimal vlrDolar = listaProduto.get(i).getValorDolar();
+			p.setId(id);
+			p.setDescricao(descricao);
+			p.setValorDolar(vlrDolar);
 			
 			minhaLista.add(p);
 		}

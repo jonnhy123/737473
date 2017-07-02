@@ -87,6 +87,7 @@ public class Principal extends PrincipalBase{
 				List<Produto> listaProduto = lpu.lerProdutos(url);
 				modeloProduto = new ProdutoModelo(listaProduto);
 				modeloProduto.salvar(listaProduto);
+				
 	}
 
 	/**
