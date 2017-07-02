@@ -1,6 +1,8 @@
 package br.univel;
 
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
 
 /**
@@ -9,21 +11,33 @@ import java.util.List;
  */
 public class Principal extends PrincipalBase{
 
+	private static PainelWrapper instanciaUnica = null;
+	
 	public Principal() {
+		super();
 		configurarBotoes();
 	}
 	
 	private void configurarBotoes() {
 		baixarLista();
+		cadastrarCliente();
+	}
+
+	private void cadastrarCliente() {
+		
 	}
 
 	private void baixarLista() {
-		ProdutoModelo modeloProduto;
-		final String url = "http://www.master10.com.py/lista-txt/donwload";
-		LeitorProdutoUrl lpu = new LeitorProdutoUrl();
-		List<Produto> listaProduto = lpu.lerProdutos(url);
-		modeloProduto = new ProdutoModelo(listaProduto);
-		modeloProduto.salvar(listaProduto);
+		super.mntmBaixarLista.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ProdutoModelo modeloProduto;
+				final String url = "http://www.master10.com.py/lista-txt/donwload";
+				LeitorProdutoUrl lpu = new LeitorProdutoUrl();
+				List<Produto> listaProduto = lpu.lerProdutos(url);
+				modeloProduto = new ProdutoModelo(listaProduto);
+				modeloProduto.salvar(listaProduto);
+			}
+		});
 	}
 
 	/**
