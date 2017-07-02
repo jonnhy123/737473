@@ -29,6 +29,7 @@ public class PainelCadClientesBase extends JPanel {
 	protected JButton btnSalvarDados;
 	protected JButton btnNovoCliente;
 	protected JButton btnVerClientes;
+	protected JTextField txtEstado;
 	
 	//Formatar campos de texto
 	private MaskFormatter setMascara(String mascara){
@@ -124,13 +125,14 @@ public class PainelCadClientesBase extends JPanel {
 		gbc_lblEstado.gridy = 3;
 		panel.add(lblEstado, gbc_lblEstado);
 		
-		JComboBox comboBox = new JComboBox();
-		GridBagConstraints gbc_comboBox = new GridBagConstraints();
-		gbc_comboBox.anchor = GridBagConstraints.WEST;
-		gbc_comboBox.insets = new Insets(0, 0, 5, 0);
-		gbc_comboBox.gridx = 1;
-		gbc_comboBox.gridy = 3;
-		panel.add(comboBox, gbc_comboBox);
+		txtEstado = new JTextField();
+		GridBagConstraints gbc_txtEstado = new GridBagConstraints();
+		gbc_txtEstado.anchor = GridBagConstraints.WEST;
+		gbc_txtEstado.insets = new Insets(0, 0, 5, 0);
+		gbc_txtEstado.gridx = 1;
+		gbc_txtEstado.gridy = 3;
+		panel.add(txtEstado, gbc_txtEstado);
+		txtEstado.setColumns(45);
 		
 		JLabel lblTelefone = new JLabel("Cidade:");
 		GridBagConstraints gbc_lblTelefone = new GridBagConstraints();

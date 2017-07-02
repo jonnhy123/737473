@@ -7,6 +7,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.GridBagLayout;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.GridBagConstraints;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
@@ -73,5 +75,4 @@ public class PrincipalBase extends JFrame {
 		gbc_tabbedPane.gridy = 0;
 		contentPane.add(tabbedPane, gbc_tabbedPane);
 	}
-
 }

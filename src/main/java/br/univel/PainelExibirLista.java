@@ -21,6 +21,14 @@ public class PainelExibirLista extends PainelExibirListaBase{
 		configurarBusca();
 	}
 
+	public void setOnOk(Consumer<Produto> p) {
+		this.consumerOnOk = p;
+	}
+
+	public void setOnCancel(Runnable r) {
+		this.runnableOnCancel = r;
+	}
+	
 	private void configurarBusca() {
 		ProdutoModelo model = new ProdutoModelo();
 		table.setModel(model);
