@@ -8,27 +8,29 @@ import java.awt.Insets;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
+import javax.swing.border.EmptyBorder;
 
 /**
  * By: Jhonatan Mattana
  * 1 de jul de 2017 - 23:13:30 
  */
 public class PainelCadClientesBase extends JPanel {
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
-	private JTextField textField_6;
-	private JButton btnSalvarDados;
-	private JButton btnNovoCliente;
-	private JButton btnVerClientes;
+	protected JTextField textField;
+	protected JTextField textField_1;
+	protected JTextField textField_2;
+	protected JTextField textField_3;
+	protected JTextField textField_4;
+	protected JTextField textField_5;
+	protected JTextField textField_6;
+	protected JButton btnSalvarDados;
+	protected JButton btnNovoCliente;
+	protected JButton btnVerClientes;
 
 	/**
 	 * Create the panel.
 	 */
 	public PainelCadClientesBase() {
+		setBorder(new EmptyBorder(5, 5, 5, 5));
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0, 0};
