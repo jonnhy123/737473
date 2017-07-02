@@ -13,7 +13,7 @@ import javax.swing.JButton;
  * By: Jhonatan Mattana
  * 1 de jul de 2017 - 23:13:30 
  */
-public class PainelCadClientes extends JPanel {
+public class PainelCadClientesBase extends JPanel {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
@@ -21,11 +21,14 @@ public class PainelCadClientes extends JPanel {
 	private JTextField textField_4;
 	private JTextField textField_5;
 	private JTextField textField_6;
+	private JButton btnSalvarDados;
+	private JButton btnNovoCliente;
+	private JButton btnVerClientes;
 
 	/**
 	 * Create the panel.
 	 */
-	public PainelCadClientes() {
+	public PainelCadClientesBase() {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0, 0};
@@ -201,7 +204,7 @@ public class PainelCadClientes extends JPanel {
 		gbl_panel_1.rowWeights = new double[]{0.0, Double.MIN_VALUE};
 		panel_1.setLayout(gbl_panel_1);
 		
-		JButton btnSalvarDados = new JButton("Salvar dados");
+		btnSalvarDados = new JButton("Salvar dados");
 		GridBagConstraints gbc_btnSalvarDados = new GridBagConstraints();
 		gbc_btnSalvarDados.anchor = GridBagConstraints.EAST;
 		gbc_btnSalvarDados.insets = new Insets(0, 0, 0, 5);
@@ -209,14 +212,14 @@ public class PainelCadClientes extends JPanel {
 		gbc_btnSalvarDados.gridy = 0;
 		panel_1.add(btnSalvarDados, gbc_btnSalvarDados);
 		
-		JButton btnNovoCliente = new JButton("Novo cliente");
+		btnNovoCliente = new JButton("Novo cliente");
 		GridBagConstraints gbc_btnNovoCliente = new GridBagConstraints();
 		gbc_btnNovoCliente.insets = new Insets(0, 0, 0, 5);
 		gbc_btnNovoCliente.gridx = 1;
 		gbc_btnNovoCliente.gridy = 0;
 		panel_1.add(btnNovoCliente, gbc_btnNovoCliente);
 		
-		JButton btnVerClientes = new JButton("Ver clientes");
+		btnVerClientes = new JButton("Ver clientes");
 		GridBagConstraints gbc_btnVerClientes = new GridBagConstraints();
 		gbc_btnVerClientes.gridx = 2;
 		gbc_btnVerClientes.gridy = 0;
