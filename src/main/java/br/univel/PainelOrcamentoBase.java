@@ -19,15 +19,15 @@ import javax.swing.JButton;
  * 2 de jul de 2017 - 00:52:06 
  */
 public class PainelOrcamentoBase extends JPanel {
-	protected JTextField txtf;
-	protected JTextField textField_1;
-	protected JTextField textField_2;
-	protected JTextField textField_3;
-	protected JTextField textField_4;
-	protected JTextField textField_5;
-	protected JTextField textField_6;
+	protected JTextField txtCodigoProduto;
+	protected JTextField txtProdutoProduto;
+	protected JTextField txtPrecoProduto;
+	protected JTextField txtCodigoCliente;
+	protected JTextField txtNomeCliente;
+	protected JTextField txtApagar;
+	protected JTextField txtQtdCliente;
 	protected JTable tabela;
-	protected JTextField textField_7;
+	protected JTextField txtVlrTotal;
 
 	/**
 	 * Create the panel.
@@ -36,9 +36,9 @@ public class PainelOrcamentoBase extends JPanel {
 		setBorder(new EmptyBorder(5, 5, 5, 5));
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0};
-		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 177, 0, 0};
+		gridBagLayout.rowHeights = new int[]{0, 0, 104, 0, 177, 0, 0};
 		gridBagLayout.columnWeights = new double[]{1.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
 		JPanel panel_Produtos = new JPanel();
@@ -64,17 +64,17 @@ public class PainelOrcamentoBase extends JPanel {
 		gbc_lblCdigo.gridy = 0;
 		panel_Produtos.add(lblCdigo, gbc_lblCdigo);
 		
-		txtf = new JTextField();
-		txtf.setName("");
-		txtf.setActionCommand("");
-		txtf.setToolTipText("");
-		GridBagConstraints gbc_txtf = new GridBagConstraints();
-		gbc_txtf.anchor = GridBagConstraints.WEST;
-		gbc_txtf.insets = new Insets(0, 0, 5, 0);
-		gbc_txtf.gridx = 1;
-		gbc_txtf.gridy = 0;
-		panel_Produtos.add(txtf, gbc_txtf);
-		txtf.setColumns(10);
+		txtCodigoProduto = new JTextField();
+		txtCodigoProduto.setName("");
+		txtCodigoProduto.setActionCommand("");
+		txtCodigoProduto.setToolTipText("");
+		GridBagConstraints gbc_txtCodigoProduto = new GridBagConstraints();
+		gbc_txtCodigoProduto.anchor = GridBagConstraints.WEST;
+		gbc_txtCodigoProduto.insets = new Insets(0, 0, 5, 0);
+		gbc_txtCodigoProduto.gridx = 1;
+		gbc_txtCodigoProduto.gridy = 0;
+		panel_Produtos.add(txtCodigoProduto, gbc_txtCodigoProduto);
+		txtCodigoProduto.setColumns(10);
 		
 		JLabel lblProduto = new JLabel("Produto");
 		GridBagConstraints gbc_lblProduto = new GridBagConstraints();
@@ -84,14 +84,14 @@ public class PainelOrcamentoBase extends JPanel {
 		gbc_lblProduto.gridy = 1;
 		panel_Produtos.add(lblProduto, gbc_lblProduto);
 		
-		textField_1 = new JTextField();
-		GridBagConstraints gbc_textField_1 = new GridBagConstraints();
-		gbc_textField_1.insets = new Insets(0, 0, 5, 0);
-		gbc_textField_1.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField_1.gridx = 1;
-		gbc_textField_1.gridy = 1;
-		panel_Produtos.add(textField_1, gbc_textField_1);
-		textField_1.setColumns(10);
+		txtProdutoProduto = new JTextField();
+		GridBagConstraints gbc_txtProdutoProduto = new GridBagConstraints();
+		gbc_txtProdutoProduto.anchor = GridBagConstraints.WEST;
+		gbc_txtProdutoProduto.insets = new Insets(0, 0, 5, 0);
+		gbc_txtProdutoProduto.gridx = 1;
+		gbc_txtProdutoProduto.gridy = 1;
+		panel_Produtos.add(txtProdutoProduto, gbc_txtProdutoProduto);
+		txtProdutoProduto.setColumns(45);
 		
 		JLabel lblPreo = new JLabel("Pre\u00E7o:");
 		GridBagConstraints gbc_lblPreo = new GridBagConstraints();
@@ -101,14 +101,14 @@ public class PainelOrcamentoBase extends JPanel {
 		gbc_lblPreo.gridy = 2;
 		panel_Produtos.add(lblPreo, gbc_lblPreo);
 		
-		textField_2 = new JTextField();
-		GridBagConstraints gbc_textField_2 = new GridBagConstraints();
-		gbc_textField_2.anchor = GridBagConstraints.WEST;
-		gbc_textField_2.insets = new Insets(0, 0, 5, 0);
-		gbc_textField_2.gridx = 1;
-		gbc_textField_2.gridy = 2;
-		panel_Produtos.add(textField_2, gbc_textField_2);
-		textField_2.setColumns(10);
+		txtPrecoProduto = new JTextField();
+		GridBagConstraints gbc_txtPrecoProduto = new GridBagConstraints();
+		gbc_txtPrecoProduto.anchor = GridBagConstraints.WEST;
+		gbc_txtPrecoProduto.insets = new Insets(0, 0, 5, 0);
+		gbc_txtPrecoProduto.gridx = 1;
+		gbc_txtPrecoProduto.gridy = 2;
+		panel_Produtos.add(txtPrecoProduto, gbc_txtPrecoProduto);
+		txtPrecoProduto.setColumns(10);
 		
 		JPanel panel_Clientes = new JPanel();
 		panel_Clientes.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Clientes", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(255, 0, 0)));
@@ -120,9 +120,9 @@ public class PainelOrcamentoBase extends JPanel {
 		add(panel_Clientes, gbc_panel_Clientes);
 		GridBagLayout gbl_panel_Clientes = new GridBagLayout();
 		gbl_panel_Clientes.columnWidths = new int[]{0, 0, 0};
-		gbl_panel_Clientes.rowHeights = new int[]{0, 0, 0, 0, 0};
+		gbl_panel_Clientes.rowHeights = new int[]{0, 0, 0, 0};
 		gbl_panel_Clientes.columnWeights = new double[]{0.0, 1.0, Double.MIN_VALUE};
-		gbl_panel_Clientes.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_panel_Clientes.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0};
 		panel_Clientes.setLayout(gbl_panel_Clientes);
 		
 		JLabel lblCdigo_1 = new JLabel("C\u00F3digo:");
@@ -133,14 +133,14 @@ public class PainelOrcamentoBase extends JPanel {
 		gbc_lblCdigo_1.gridy = 0;
 		panel_Clientes.add(lblCdigo_1, gbc_lblCdigo_1);
 		
-		textField_3 = new JTextField();
-		GridBagConstraints gbc_textField_3 = new GridBagConstraints();
-		gbc_textField_3.anchor = GridBagConstraints.WEST;
-		gbc_textField_3.insets = new Insets(0, 0, 5, 0);
-		gbc_textField_3.gridx = 1;
-		gbc_textField_3.gridy = 0;
-		panel_Clientes.add(textField_3, gbc_textField_3);
-		textField_3.setColumns(10);
+		txtCodigoCliente = new JTextField();
+		GridBagConstraints gbc_txtCodigoCliente = new GridBagConstraints();
+		gbc_txtCodigoCliente.anchor = GridBagConstraints.WEST;
+		gbc_txtCodigoCliente.insets = new Insets(0, 0, 5, 0);
+		gbc_txtCodigoCliente.gridx = 1;
+		gbc_txtCodigoCliente.gridy = 0;
+		panel_Clientes.add(txtCodigoCliente, gbc_txtCodigoCliente);
+		txtCodigoCliente.setColumns(10);
 		
 		JLabel lblNome = new JLabel("Nome:");
 		GridBagConstraints gbc_lblNome = new GridBagConstraints();
@@ -150,47 +150,30 @@ public class PainelOrcamentoBase extends JPanel {
 		gbc_lblNome.gridy = 1;
 		panel_Clientes.add(lblNome, gbc_lblNome);
 		
-		textField_4 = new JTextField();
-		GridBagConstraints gbc_textField_4 = new GridBagConstraints();
-		gbc_textField_4.insets = new Insets(0, 0, 5, 0);
-		gbc_textField_4.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField_4.gridx = 1;
-		gbc_textField_4.gridy = 1;
-		panel_Clientes.add(textField_4, gbc_textField_4);
-		textField_4.setColumns(10);
-		
-		JLabel lblCelular = new JLabel("Celular:");
-		GridBagConstraints gbc_lblCelular = new GridBagConstraints();
-		gbc_lblCelular.anchor = GridBagConstraints.EAST;
-		gbc_lblCelular.insets = new Insets(0, 0, 5, 5);
-		gbc_lblCelular.gridx = 0;
-		gbc_lblCelular.gridy = 2;
-		panel_Clientes.add(lblCelular, gbc_lblCelular);
-		
-		textField_5 = new JTextField();
-		GridBagConstraints gbc_textField_5 = new GridBagConstraints();
-		gbc_textField_5.anchor = GridBagConstraints.WEST;
-		gbc_textField_5.insets = new Insets(0, 0, 5, 0);
-		gbc_textField_5.gridx = 1;
-		gbc_textField_5.gridy = 2;
-		panel_Clientes.add(textField_5, gbc_textField_5);
-		textField_5.setColumns(15);
+		txtNomeCliente = new JTextField();
+		GridBagConstraints gbc_txtNomeCliente = new GridBagConstraints();
+		gbc_txtNomeCliente.anchor = GridBagConstraints.WEST;
+		gbc_txtNomeCliente.insets = new Insets(0, 0, 5, 0);
+		gbc_txtNomeCliente.gridx = 1;
+		gbc_txtNomeCliente.gridy = 1;
+		panel_Clientes.add(txtNomeCliente, gbc_txtNomeCliente);
+		txtNomeCliente.setColumns(40);
 		
 		JLabel lblQtdProdutos = new JLabel("Qtd produtos:");
 		GridBagConstraints gbc_lblQtdProdutos = new GridBagConstraints();
 		gbc_lblQtdProdutos.anchor = GridBagConstraints.EAST;
-		gbc_lblQtdProdutos.insets = new Insets(0, 0, 0, 5);
+		gbc_lblQtdProdutos.insets = new Insets(0, 0, 5, 0);
 		gbc_lblQtdProdutos.gridx = 0;
-		gbc_lblQtdProdutos.gridy = 3;
+		gbc_lblQtdProdutos.gridy = 2;
 		panel_Clientes.add(lblQtdProdutos, gbc_lblQtdProdutos);
 		
-		textField_6 = new JTextField();
-		GridBagConstraints gbc_textField_6 = new GridBagConstraints();
-		gbc_textField_6.anchor = GridBagConstraints.WEST;
-		gbc_textField_6.gridx = 1;
-		gbc_textField_6.gridy = 3;
-		panel_Clientes.add(textField_6, gbc_textField_6);
-		textField_6.setColumns(10);
+		txtQtdCliente = new JTextField();
+		GridBagConstraints gbc_txtQtdCliente = new GridBagConstraints();
+		gbc_txtQtdCliente.anchor = GridBagConstraints.WEST;
+		gbc_txtQtdCliente.gridx = 1;
+		gbc_txtQtdCliente.gridy = 2;
+		panel_Clientes.add(txtQtdCliente, gbc_txtQtdCliente);
+		txtQtdCliente.setColumns(10);
 		
 		JPanel panel_Tabela = new JPanel();
 		GridBagConstraints gbc_panel_Tabela = new GridBagConstraints();
@@ -239,13 +222,13 @@ public class PainelOrcamentoBase extends JPanel {
 		gbc_lblNewLabel.gridy = 0;
 		panel_VlrTotal.add(lblNewLabel, gbc_lblNewLabel);
 		
-		textField_7 = new JTextField();
-		GridBagConstraints gbc_textField_7 = new GridBagConstraints();
-		gbc_textField_7.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField_7.gridx = 1;
-		gbc_textField_7.gridy = 0;
-		panel_VlrTotal.add(textField_7, gbc_textField_7);
-		textField_7.setColumns(10);
+		txtVlrTotal = new JTextField();
+		GridBagConstraints gbc_txtVlrTotal = new GridBagConstraints();
+		gbc_txtVlrTotal.fill = GridBagConstraints.HORIZONTAL;
+		gbc_txtVlrTotal.gridx = 1;
+		gbc_txtVlrTotal.gridy = 0;
+		panel_VlrTotal.add(txtVlrTotal, gbc_txtVlrTotal);
+		txtVlrTotal.setColumns(10);
 		
 		JPanel panel_CamposProdutos = new JPanel();
 		GridBagConstraints gbc_panel_CamposProdutos = new GridBagConstraints();

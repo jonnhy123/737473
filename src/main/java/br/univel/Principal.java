@@ -15,6 +15,7 @@ public class Principal extends PrincipalBase{
 
 	private static PainelCadCliente instanciaUnica_C = null;
 	private static PainelOrcamentos instanciaUnica_O = null;
+	private static PainelExibirLista instanciaUnica_E = null;
 	
 	public Principal() {
 		super();
@@ -38,6 +39,12 @@ public class Principal extends PrincipalBase{
 				realizarOrcamento();
 			}
 		});
+		super.mntmExibirLista.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				exibirLista();
+			}
+		});
 	}
 	
 	protected void realizarOrcamento() {
@@ -54,7 +61,7 @@ public class Principal extends PrincipalBase{
 					instanciaUnica_O = null;
 				}
 			});
-			tabbedPane.addTab("Orçamento", wrapper);
+			tabbedPane.addTab("Realizar orçamento", wrapper);
 		}else{
 			JOptionPane.showMessageDialog(null, "Proibido dublicar aba.");
 		}
@@ -74,22 +81,51 @@ public class Principal extends PrincipalBase{
 					instanciaUnica_C = null;
 				}
 			});
-			tabbedPane.addTab("Clientes", wrapper);
+			tabbedPane.addTab("Cadastrar clientes", wrapper);
+		}else{
+			JOptionPane.showMessageDialog(null, "Proibido dublicar aba.");
+		}
+	}
+	
+	protected void exibirLista() {
+		
+		if (instanciaUnica_E == null) {
+			instanciaUnica_E = new PainelExibirLista();
+			ProdutoDao dao = new ProdutoDao();
+			List<Produto> lista = dao.selectFrom();
+			ProdutoModelo modeloProduto = new ProdutoModelo(lista);
+			instanciaUnica_E.table.setModel(modeloProduto);
+			final PainelWrapper wrapper = new PainelWrapper();
+			wrapper.setConteudo(instanciaUnica_E);
+			wrapper.setTitulo("Buscar clientes");
+			
+			wrapper.setFecharPainel(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					tabbedPane.remove(wrapper);
+					instanciaUnica_E = null;
+				}
+			});
+			tabbedPane.addTab("Busca de clientes", wrapper);
 		}else{
 			JOptionPane.showMessageDialog(null, "Proibido dublicar aba.");
 		}
 	}
 
 	protected void baixarLista() {
+		
 				ProdutoModelo modeloProduto;
 				final String url = "http://www.master10.com.py/lista-txt/donwload";
 				LeitorProdutoUrl lpu = new LeitorProdutoUrl();
 				List<Produto> listaProduto = lpu.lerProdutos(url);
 				modeloProduto = new ProdutoModelo(listaProduto);
+				modeloProduto = new ProdutoModelo(listaProduto);
+
 				modeloProduto.salvar(listaProduto);
 				
+				JOptionPane.showMessageDialog(null, "Lista baixada com sucesso!!!");
 	}
-
+		
 	/**
 	 * Launch the application.
 	 */

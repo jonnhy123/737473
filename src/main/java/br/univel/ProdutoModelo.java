@@ -12,7 +12,11 @@ import javax.swing.table.AbstractTableModel;
  */
 public class ProdutoModelo extends AbstractTableModel{
 
-	private static List<Produto> listaProdutoDeClasse = new ArrayList<>();
+	private List<Produto> listaProdutoDeClasse = new ArrayList<>();
+
+	public ProdutoModelo() {
+		this((List<Produto>)null);
+	}
 
 	public ProdutoModelo(List<Produto> listaProdutoContrutor) {
 			listaProdutoDeClasse = listaProdutoContrutor;
@@ -39,7 +43,7 @@ public class ProdutoModelo extends AbstractTableModel{
 		return super.getColumnName(column);
 	}
 
-	
+	@Override
 	public Object getValueAt(int row, int column) {
 
 		Produto p = listaProdutoDeClasse.get(row);
@@ -50,7 +54,7 @@ public class ProdutoModelo extends AbstractTableModel{
 		case 1:
 			return p.getDescricao();
 		case 2:
-			p.getValorDolar();
+			return p.getValorDolar();
 		}
 		
 		throw new RuntimeException("Coluna "+column+"não encontrada");

@@ -5,27 +5,40 @@ import java.awt.GridBagLayout;
 import javax.swing.JLabel;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import java.text.ParseException;
+
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 import javax.swing.border.EmptyBorder;
+import javax.swing.text.MaskFormatter;
+import javax.swing.JFormattedTextField;
 
 /**
  * By: Jhonatan Mattana
  * 1 de jul de 2017 - 23:13:30 
  */
 public class PainelCadClientesBase extends JPanel {
-	protected JTextField textField;
-	protected JTextField textField_1;
-	protected JTextField textField_2;
-	protected JTextField textField_3;
-	protected JTextField textField_4;
-	protected JTextField textField_5;
-	protected JTextField textField_6;
+	protected JTextField txtNome;
+	protected JTextField txtEndereco;
+	protected JTextField txtBairro;
+	protected JTextField txtCidade;
+	protected JFormattedTextField txtCep;
+	protected JFormattedTextField txtCPF;
+	protected JTextField txtCodigo;
 	protected JButton btnSalvarDados;
 	protected JButton btnNovoCliente;
 	protected JButton btnVerClientes;
-
+	
+	//Formatar campos de texto
+	private MaskFormatter setMascara(String mascara){
+		 MaskFormatter mask = null; 
+			try{
+				 mask = new MaskFormatter(mascara);	
+	}catch(java.text.ParseException ex){
+		} return mask;
+	}
+	
 	/**
 	 * Create the panel.
 	 */
@@ -60,14 +73,14 @@ public class PainelCadClientesBase extends JPanel {
 		gbc_lblNome.gridy = 0;
 		panel.add(lblNome, gbc_lblNome);
 		
-		textField = new JTextField();
-		GridBagConstraints gbc_textField = new GridBagConstraints();
-		gbc_textField.insets = new Insets(0, 0, 5, 0);
-		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField.gridx = 1;
-		gbc_textField.gridy = 0;
-		panel.add(textField, gbc_textField);
-		textField.setColumns(10);
+		txtNome = new JTextField();
+		GridBagConstraints gbc_txtNome = new GridBagConstraints();
+		gbc_txtNome.insets = new Insets(0, 0, 5, 0);
+		gbc_txtNome.fill = GridBagConstraints.HORIZONTAL;
+		gbc_txtNome.gridx = 1;
+		gbc_txtNome.gridy = 0;
+		panel.add(txtNome, gbc_txtNome);
+		txtNome.setColumns(10);
 		
 		JLabel lblEndereo = new JLabel("Endere\u00E7o:");
 		GridBagConstraints gbc_lblEndereo = new GridBagConstraints();
@@ -77,14 +90,14 @@ public class PainelCadClientesBase extends JPanel {
 		gbc_lblEndereo.gridy = 1;
 		panel.add(lblEndereo, gbc_lblEndereo);
 		
-		textField_1 = new JTextField();
-		GridBagConstraints gbc_textField_1 = new GridBagConstraints();
-		gbc_textField_1.insets = new Insets(0, 0, 5, 0);
-		gbc_textField_1.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField_1.gridx = 1;
-		gbc_textField_1.gridy = 1;
-		panel.add(textField_1, gbc_textField_1);
-		textField_1.setColumns(10);
+		txtEndereco = new JTextField();
+		GridBagConstraints gbc_txtEndereco = new GridBagConstraints();
+		gbc_txtEndereco.insets = new Insets(0, 0, 5, 0);
+		gbc_txtEndereco.fill = GridBagConstraints.HORIZONTAL;
+		gbc_txtEndereco.gridx = 1;
+		gbc_txtEndereco.gridy = 1;
+		panel.add(txtEndereco, gbc_txtEndereco);
+		txtEndereco.setColumns(10);
 		
 		JLabel lblBairro = new JLabel("Bairro:");
 		GridBagConstraints gbc_lblBairro = new GridBagConstraints();
@@ -94,14 +107,14 @@ public class PainelCadClientesBase extends JPanel {
 		gbc_lblBairro.gridy = 2;
 		panel.add(lblBairro, gbc_lblBairro);
 		
-		textField_2 = new JTextField();
-		GridBagConstraints gbc_textField_2 = new GridBagConstraints();
-		gbc_textField_2.insets = new Insets(0, 0, 5, 0);
-		gbc_textField_2.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField_2.gridx = 1;
-		gbc_textField_2.gridy = 2;
-		panel.add(textField_2, gbc_textField_2);
-		textField_2.setColumns(10);
+		txtBairro = new JTextField();
+		GridBagConstraints gbc_txtBairro = new GridBagConstraints();
+		gbc_txtBairro.insets = new Insets(0, 0, 5, 0);
+		gbc_txtBairro.fill = GridBagConstraints.HORIZONTAL;
+		gbc_txtBairro.gridx = 1;
+		gbc_txtBairro.gridy = 2;
+		panel.add(txtBairro, gbc_txtBairro);
+		txtBairro.setColumns(10);
 		
 		JLabel lblEstado = new JLabel("Estado:");
 		GridBagConstraints gbc_lblEstado = new GridBagConstraints();
@@ -127,14 +140,14 @@ public class PainelCadClientesBase extends JPanel {
 		gbc_lblTelefone.gridy = 4;
 		panel.add(lblTelefone, gbc_lblTelefone);
 		
-		textField_3 = new JTextField();
-		GridBagConstraints gbc_textField_3 = new GridBagConstraints();
-		gbc_textField_3.insets = new Insets(0, 0, 5, 0);
-		gbc_textField_3.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField_3.gridx = 1;
-		gbc_textField_3.gridy = 4;
-		panel.add(textField_3, gbc_textField_3);
-		textField_3.setColumns(10);
+		txtCidade = new JTextField();
+		GridBagConstraints gbc_txtCidade = new GridBagConstraints();
+		gbc_txtCidade.anchor = GridBagConstraints.WEST;
+		gbc_txtCidade.insets = new Insets(0, 0, 5, 0);
+		gbc_txtCidade.gridx = 1;
+		gbc_txtCidade.gridy = 4;
+		panel.add(txtCidade, gbc_txtCidade);
+		txtCidade.setColumns(25);
 		
 		JLabel label = new JLabel("");
 		GridBagConstraints gbc_label = new GridBagConstraints();
@@ -151,14 +164,14 @@ public class PainelCadClientesBase extends JPanel {
 		gbc_lblCdigo.gridy = 6;
 		panel.add(lblCdigo, gbc_lblCdigo);
 		
-		textField_4 = new JTextField();
-		GridBagConstraints gbc_textField_4 = new GridBagConstraints();
-		gbc_textField_4.insets = new Insets(0, 0, 5, 0);
-		gbc_textField_4.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField_4.gridx = 1;
-		gbc_textField_4.gridy = 6;
-		panel.add(textField_4, gbc_textField_4);
-		textField_4.setColumns(10);
+		txtCep = new JFormattedTextField((setMascara("#####.###")));
+		GridBagConstraints gbc_txtCep = new GridBagConstraints();
+		gbc_txtCep.anchor = GridBagConstraints.WEST;
+		gbc_txtCep.insets = new Insets(0, 0, 5, 0);
+		gbc_txtCep.gridx = 1;
+		gbc_txtCep.gridy = 6;
+		panel.add(txtCep, gbc_txtCep);
+		txtCep.setColumns(12);
 		
 		JLabel lblCpf = new JLabel("CPF:");
 		GridBagConstraints gbc_lblCpf = new GridBagConstraints();
@@ -168,14 +181,14 @@ public class PainelCadClientesBase extends JPanel {
 		gbc_lblCpf.gridy = 7;
 		panel.add(lblCpf, gbc_lblCpf);
 		
-		textField_5 = new JTextField();
-		GridBagConstraints gbc_textField_5 = new GridBagConstraints();
-		gbc_textField_5.insets = new Insets(0, 0, 5, 0);
-		gbc_textField_5.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField_5.gridx = 1;
-		gbc_textField_5.gridy = 7;
-		panel.add(textField_5, gbc_textField_5);
-		textField_5.setColumns(10);
+		txtCPF = new JFormattedTextField(setMascara("###.###.###.##"));
+		GridBagConstraints gbc_txtCPF = new GridBagConstraints();
+		gbc_txtCPF.anchor = GridBagConstraints.WEST;
+		gbc_txtCPF.insets = new Insets(0, 0, 5, 0);
+		gbc_txtCPF.gridx = 1;
+		gbc_txtCPF.gridy = 7;
+		panel.add(txtCPF, gbc_txtCPF);
+		txtCPF.setColumns(12);
 		
 		JLabel lblCdigo_1 = new JLabel("C\u00F3digo:");
 		GridBagConstraints gbc_lblCdigo_1 = new GridBagConstraints();
@@ -185,13 +198,13 @@ public class PainelCadClientesBase extends JPanel {
 		gbc_lblCdigo_1.gridy = 8;
 		panel.add(lblCdigo_1, gbc_lblCdigo_1);
 		
-		textField_6 = new JTextField();
-		GridBagConstraints gbc_textField_6 = new GridBagConstraints();
-		gbc_textField_6.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField_6.gridx = 1;
-		gbc_textField_6.gridy = 8;
-		panel.add(textField_6, gbc_textField_6);
-		textField_6.setColumns(10);
+		txtCodigo = new JTextField();
+		GridBagConstraints gbc_txtCodigo = new GridBagConstraints();
+		gbc_txtCodigo.anchor = GridBagConstraints.WEST;
+		gbc_txtCodigo.gridx = 1;
+		gbc_txtCodigo.gridy = 8;
+		panel.add(txtCodigo, gbc_txtCodigo);
+		txtCodigo.setColumns(6);
 		
 		JPanel panel_1 = new JPanel();
 		GridBagConstraints gbc_panel_1 = new GridBagConstraints();

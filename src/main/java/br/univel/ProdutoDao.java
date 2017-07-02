@@ -15,7 +15,7 @@ public class ProdutoDao {
 
 	private Connection con;
 
-	public void selectFrom (){
+	public List<Produto> selectFrom (){
 		con = Conexao.getInstance().getConnection();
 		
 		List<Produto> listaP = new ArrayList<Produto>();
@@ -38,13 +38,13 @@ public class ProdutoDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return listaP;
 	}
 	
 	public void salvar(List<Produto> minhaLista) {
 		con = Conexao.getInstance().getConnection();
 
-		String insertInto = "INSERT INTO produto (id,descricao,valorDolar)"
-				+ "VALUES (?,?,?)";
+		String insertInto = "INSERT INTO produto (id,descricao,valorDolar) VALUES (?,?,?) ";
 		
 		try {
 			PreparedStatement ps = con.prepareStatement(insertInto);

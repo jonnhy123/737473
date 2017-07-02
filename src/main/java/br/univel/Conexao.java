@@ -9,6 +9,7 @@ import java.sql.SQLException;
  * 2 de jul de 2017 - 02:29:01 
  */
 public class Conexao {
+	
 	private static Conexao self;
 	private Connection con;
 	
@@ -20,9 +21,9 @@ public class Conexao {
 	public Conexao() {
 		try {
 			Class.forName(driver);
-			DriverManager.getConnection(url,banco,pas);
-		} catch (Exception e) {
-			System.err.println("Erro no Driver de conexão\n"+ e);
+			con = DriverManager.getConnection(url,banco,pas);
+		} catch (SQLException | ClassNotFoundException e) {
+			e.printStackTrace();
 		}
 		
 		Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
@@ -31,10 +32,11 @@ public class Conexao {
 				try {
 					Conexao.this.con.close();
 				} catch (SQLException e) {
-					System.out.println("Erro ao fechar a conexão\n"+e);
+					e.printStackTrace();
 				}
 			}
 		}));
+		
 	}
 	
 	public static final synchronized Conexao getInstance(){
@@ -50,6 +52,6 @@ public class Conexao {
 
 	@Override
 	protected Object clone() throws CloneNotSupportedException {
-		throw new RuntimeException("Só pode haver um.");
+		throw new CloneNotSupportedException("Só pode haver um.");
 	}
 }
