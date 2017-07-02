@@ -19,6 +19,7 @@ public class PainelExibirListaBase extends JPanel {
 	protected JTextField txtCodigo;
 	protected JTextField txtNome;
 	protected JTable table;
+	protected JPanel panel;
 
 	/**
 	 * Create the panel.
@@ -32,7 +33,7 @@ public class PainelExibirListaBase extends JPanel {
 		gridBagLayout.rowWeights = new double[]{0.0, 1.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
-		JPanel panel = new JPanel();
+		panel = new JPanel();
 		GridBagConstraints gbc_panel = new GridBagConstraints();
 		gbc_panel.insets = new Insets(0, 0, 5, 0);
 		gbc_panel.fill = GridBagConstraints.BOTH;

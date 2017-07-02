@@ -1,5 +1,6 @@
 package br.univel;
 
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -29,7 +30,7 @@ public class ProdutoDao {
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				Produto p = new Produto();
-				p.setId(rs.getLong(1));
+				p.setId(rs.getString(1));
 				p.setDescricao(rs.getString(2));
 				p.setValorDolar(rs.getBigDecimal(3));
 				listaP.add(p);
@@ -50,7 +51,7 @@ public class ProdutoDao {
 			PreparedStatement ps = con.prepareStatement(insertInto);
 			
 			for (Produto p : minhaLista) {
-				ps.setLong(1, p.getId());
+				ps.setString(1, p.getId());
 				ps.setString(2, p.getDescricao());
 				ps.setBigDecimal(3, p.getValorDolar());
 				
@@ -59,5 +60,49 @@ public class ProdutoDao {
 		} catch (SQLException e) {
 			System.out.println("Erro no INSERT INTO");
 		}
+	}
+
+	public List<Produto> buscarPorNome(String palavra) {
+		con = Conexao.getInstance().getConnection();
+		List<Produto> lista = new ArrayList<>();
+		String buscar = "SELECT * FROM produto WHERE descricao ILIKE '%"+palavra+"%'";
+		PreparedStatement ps;
+		try {
+			ps = con.prepareStatement(buscar);
+			ResultSet rs = ps.executeQuery(); 
+			while(rs.next()) {
+				Produto p = new Produto();
+				p.setId(rs.getString(1));
+				p.setDescricao(rs.getString(2));
+				p.setValorDolar(rs.getBigDecimal(3));
+				lista.add(p);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return lista;
+	}
+
+	public List<Produto> buscarPorId(String palavra) {
+		con = Conexao.getInstance().getConnection();
+		List<Produto> lista = new ArrayList<>();
+		String buscar = "SELECT * FROM produto WHERE id LIKE '"+palavra+"%'";
+		PreparedStatement ps;
+		try {
+			ps = con.prepareStatement(buscar);
+			ResultSet rs = ps.executeQuery(); 
+			while(rs.next()) {
+				Produto p = new Produto();
+				p.setId(rs.getString(1));
+				p.setDescricao(rs.getString(2));
+				p.setValorDolar(rs.getBigDecimal(3));
+				lista.add(p);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return lista;
 	}
 }

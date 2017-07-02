@@ -13,9 +13,10 @@ import javax.swing.JOptionPane;
  */
 public class Principal extends PrincipalBase{
 
-	private static PainelCadCliente instanciaUnica_C = null;
+	private static PainelCadCliente instanciaUnica_Cad = null;
 	private static PainelOrcamentos instanciaUnica_O = null;
-	private static PainelExibirLista instanciaUnica_E = null;
+	private static PainelExibirLista instanciaUnica_Exibir = null;
+	private static PainelEditarClienteBase instanciaUnica_Editar = null;
 	
 	public Principal() {
 		super();
@@ -45,8 +46,32 @@ public class Principal extends PrincipalBase{
 				exibirLista();
 			}
 		});
+		super.mntmEditarCliente.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				editarCliente();
+			}
+		});
 	}
 	
+	protected void editarCliente() {
+		if (instanciaUnica_Editar == null) {
+			instanciaUnica_Editar = new PainelEditarClienteBase();
+			final PainelWrapper wrapper = new PainelWrapper();
+			wrapper.setConteudo(instanciaUnica_Editar);
+			wrapper.setTitulo("Editar cliente");
+			
+			wrapper.setFecharPainel(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					tabbedPane.remove(wrapper);
+					instanciaUnica_Editar = null;
+				}
+			});
+			tabbedPane.addTab("Editar clientes", wrapper);
+		}
+	}
+
 	protected void realizarOrcamento() {
 		//Aplicando padrão Singleton
 		if (instanciaUnica_O == null) {
@@ -69,16 +94,16 @@ public class Principal extends PrincipalBase{
 
 	protected void cadastrarCliente() {
 		//Aplicando padrão Singleton
-		if (instanciaUnica_C == null) {
-			instanciaUnica_C = new PainelCadCliente();
+		if (instanciaUnica_Cad == null) {
+			instanciaUnica_Cad = new PainelCadCliente();
 			final PainelWrapper wrapper = new PainelWrapper();
-			wrapper.setConteudo(instanciaUnica_C);
+			wrapper.setConteudo(instanciaUnica_Cad);
 			wrapper.setTitulo("Cadastro de clientes");
 			
 			wrapper.setFecharPainel(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					tabbedPane.remove(wrapper);
-					instanciaUnica_C = null;
+					instanciaUnica_Cad = null;
 				}
 			});
 			tabbedPane.addTab("Cadastrar clientes", wrapper);
@@ -89,21 +114,21 @@ public class Principal extends PrincipalBase{
 	
 	protected void exibirLista() {
 		
-		if (instanciaUnica_E == null) {
-			instanciaUnica_E = new PainelExibirLista();
+		if (instanciaUnica_Exibir == null) {
+			instanciaUnica_Exibir = new PainelExibirLista();
 			ProdutoDao dao = new ProdutoDao();
 			List<Produto> lista = dao.selectFrom();
 			ProdutoModelo modeloProduto = new ProdutoModelo(lista);
-			instanciaUnica_E.table.setModel(modeloProduto);
+			instanciaUnica_Exibir.table.setModel(modeloProduto);
 			final PainelWrapper wrapper = new PainelWrapper();
-			wrapper.setConteudo(instanciaUnica_E);
+			wrapper.setConteudo(instanciaUnica_Exibir);
 			wrapper.setTitulo("Buscar clientes");
 			
 			wrapper.setFecharPainel(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
 					tabbedPane.remove(wrapper);
-					instanciaUnica_E = null;
+					instanciaUnica_Exibir = null;
 				}
 			});
 			tabbedPane.addTab("Busca de clientes", wrapper);

@@ -51,7 +51,8 @@ Matcher mat = pattern.matcher(linha);
 		Produto produto = new Produto();
 		if (mat.matches()) {
 			String strId = mat.group(1).trim();
-			produto.setId(Long.parseLong(strId));
+			produto.setId(strId);
+//			produto.setId(Long.parseLong(strId));
 			
 			String desc = mat.group(2).trim();
 			produto.setDescricao(desc);

@@ -7,14 +7,14 @@ import java.math.BigDecimal;
  * 30 de jun de 2017 - 19:27:57 
  */
 public class Produto {
-	private Long id;
+	private String id;
 	private String descricao;
 	private BigDecimal valorDolar;
 	
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public String getDescricao() {

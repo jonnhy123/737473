@@ -18,8 +18,14 @@ public class ProdutoModelo extends AbstractTableModel{
 		this((List<Produto>)null);
 	}
 
+	void preencherResultado(List<Produto> resultado) {
+		this.listaProdutoDeClasse = resultado;
+		fireTableDataChanged();
+	}
+	
 	public ProdutoModelo(List<Produto> listaProdutoContrutor) {
 			listaProdutoDeClasse = listaProdutoContrutor;
+			fireTableDataChanged();
 	}
 
 	public int getColumnCount() {
@@ -67,7 +73,7 @@ public class ProdutoModelo extends AbstractTableModel{
 
 		for (int i = 0; i < listaProduto.size(); i++) {
 			Produto p = new Produto();
-			Long id = listaProduto.get(i).getId();
+			String id = listaProduto.get(i).getId();
 			String descricao = listaProduto.get(i).getDescricao();
 			BigDecimal vlrDolar = listaProduto.get(i).getValorDolar();
 			p.setId(id);
@@ -77,5 +83,13 @@ public class ProdutoModelo extends AbstractTableModel{
 			minhaLista.add(p);
 		}
 		dao.salvar(minhaLista);
+	}
+
+	public Produto getProdutotAt(int idx) {
+		if (idx >= this.listaProdutoDeClasse.size()) {
+			return null;
+			
+		}
+		return this.listaProdutoDeClasse.get(idx);
 	}
 }

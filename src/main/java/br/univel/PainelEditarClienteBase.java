@@ -1,24 +1,26 @@
 package br.univel;
 
-import javax.swing.JPanel;
-import java.awt.GridBagLayout;
-import javax.swing.JLabel;
 import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.Insets;
-import java.text.ParseException;
 
-import javax.swing.JTextField;
-import javax.swing.JComboBox;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.text.MaskFormatter;
-import javax.swing.JFormattedTextField;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 
 /**
  * By: Jhonatan Mattana
- * 1 de jul de 2017 - 23:13:30 
+ * 2 de jul de 2017 - 05:33:45 
  */
-public class PainelCadClientesBase extends JPanel {
+public class PainelEditarClienteBase extends JPanel {
+
 	protected JTextField txtNome;
 	protected JTextField txtEndereco;
 	protected JTextField txtBairro;
@@ -28,6 +30,8 @@ public class PainelCadClientesBase extends JPanel {
 	protected JTextField txtCodigo;
 	protected JButton btnSalvarDados;
 	protected JButton btnNovoCliente;
+	protected JButton btnExcluirClientes;
+	protected JTable table;
 	protected JButton btnVerClientes;
 	
 	//Formatar campos de texto
@@ -42,13 +46,13 @@ public class PainelCadClientesBase extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public PainelCadClientesBase() {
+	public PainelEditarClienteBase() {
 		setBorder(new EmptyBorder(5, 5, 5, 5));
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0};
-		gridBagLayout.rowHeights = new int[]{0, 0, 0};
+		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0};
 		gridBagLayout.columnWeights = new double[]{1.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 1.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
 		JPanel panel = new JPanel();
@@ -208,14 +212,15 @@ public class PainelCadClientesBase extends JPanel {
 		
 		JPanel panel_1 = new JPanel();
 		GridBagConstraints gbc_panel_1 = new GridBagConstraints();
+		gbc_panel_1.insets = new Insets(0, 0, 5, 0);
 		gbc_panel_1.fill = GridBagConstraints.BOTH;
 		gbc_panel_1.gridx = 0;
 		gbc_panel_1.gridy = 1;
 		add(panel_1, gbc_panel_1);
 		GridBagLayout gbl_panel_1 = new GridBagLayout();
-		gbl_panel_1.columnWidths = new int[]{0, 0, 0, 0};
+		gbl_panel_1.columnWidths = new int[]{0, 0, 0, 0, 0};
 		gbl_panel_1.rowHeights = new int[]{0, 0};
-		gbl_panel_1.columnWeights = new double[]{1.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_panel_1.columnWeights = new double[]{1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		gbl_panel_1.rowWeights = new double[]{0.0, Double.MIN_VALUE};
 		panel_1.setLayout(gbl_panel_1);
 		
@@ -234,11 +239,41 @@ public class PainelCadClientesBase extends JPanel {
 		gbc_btnNovoCliente.gridy = 0;
 		panel_1.add(btnNovoCliente, gbc_btnNovoCliente);
 		
+		btnExcluirClientes = new JButton("Excluir cliente");
+		GridBagConstraints gbc_btnExcluirClientes = new GridBagConstraints();
+		gbc_btnExcluirClientes.insets = new Insets(0, 0, 0, 5);
+		gbc_btnExcluirClientes.gridx = 2;
+		gbc_btnExcluirClientes.gridy = 0;
+		panel_1.add(btnExcluirClientes, gbc_btnExcluirClientes);
+		
 		btnVerClientes = new JButton("Ver clientes");
 		GridBagConstraints gbc_btnVerClientes = new GridBagConstraints();
-		gbc_btnVerClientes.gridx = 2;
+		gbc_btnVerClientes.gridx = 3;
 		gbc_btnVerClientes.gridy = 0;
 		panel_1.add(btnVerClientes, gbc_btnVerClientes);
+		
+		JPanel panel_2 = new JPanel();
+		GridBagConstraints gbc_panel_2 = new GridBagConstraints();
+		gbc_panel_2.fill = GridBagConstraints.BOTH;
+		gbc_panel_2.gridx = 0;
+		gbc_panel_2.gridy = 2;
+		add(panel_2, gbc_panel_2);
+		GridBagLayout gbl_panel_2 = new GridBagLayout();
+		gbl_panel_2.columnWidths = new int[]{0, 0};
+		gbl_panel_2.rowHeights = new int[]{0, 0};
+		gbl_panel_2.columnWeights = new double[]{1.0, Double.MIN_VALUE};
+		gbl_panel_2.rowWeights = new double[]{1.0, Double.MIN_VALUE};
+		panel_2.setLayout(gbl_panel_2);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
+		gbc_scrollPane.fill = GridBagConstraints.BOTH;
+		gbc_scrollPane.gridx = 0;
+		gbc_scrollPane.gridy = 0;
+		panel_2.add(scrollPane, gbc_scrollPane);
+		
+		table = new JTable();
+		scrollPane.setViewportView(table);
 
 	}
 
