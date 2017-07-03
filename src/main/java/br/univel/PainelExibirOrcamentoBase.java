@@ -47,7 +47,7 @@ public class PainelExibirOrcamentoBase extends JPanel {
 		gbl_panel.rowWeights = new double[]{0.0, Double.MIN_VALUE};
 		panel.setLayout(gbl_panel);
 		
-		btnGerarReltorio = new JButton("Gerar relat\u00F3rio");
+		btnGerarReltorio = new JButton("Gerar relat\u00F3rio ");
 		GridBagConstraints gbc_btnGerarReltorio = new GridBagConstraints();
 		gbc_btnGerarReltorio.anchor = GridBagConstraints.EAST;
 		gbc_btnGerarReltorio.insets = new Insets(0, 0, 0, 5);

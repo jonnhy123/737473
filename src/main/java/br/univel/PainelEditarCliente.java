@@ -84,6 +84,7 @@ public class PainelEditarCliente extends PainelEditarClienteBase{
 				switch (e.getKeyCode()) {
 				case KeyEvent.VK_ENTER:
 				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+					preencherCampos();
 					buscaId(txtCodigo.getText().trim().toLowerCase());
 				}
 				case KeyEvent.VK_DOWN:
@@ -109,6 +110,7 @@ public class PainelEditarCliente extends PainelEditarClienteBase{
 				switch (e.getKeyCode()) {
 				case KeyEvent.VK_ENTER:
 				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+					preencherCampos();
 					buscaNome(txtNome.getText().trim().toLowerCase());
 				}
 				case KeyEvent.VK_DOWN:
@@ -156,6 +158,20 @@ public class PainelEditarCliente extends PainelEditarClienteBase{
 				}
 			}
 		});
+	}
+
+	protected void preencherCampos() {
+		
+		int indiceLinha = Integer.parseInt(txtCodigo.getText().trim());
+		
+		txtCodigo.setText(table.getValueAt(indiceLinha, 0).toString());
+		txtNome.setText(table.getValueAt(indiceLinha, 1).toString());
+		txtBairro.setText(table.getValueAt(indiceLinha, 2).toString());
+		txtEndereco.setText(table.getValueAt(indiceLinha, 3).toString());
+		txtEstado.setText(table.getValueAt(indiceLinha, 4).toString());
+		txtCidade.setText(table.getValueAt(indiceLinha, 5).toString());
+		txtCep.setText(table.getValueAt(indiceLinha, 6).toString());
+		txtCPF.setText(table.getValueAt(indiceLinha, 7).toString());
 	}
 
 	protected void buscaId(String palavra) {

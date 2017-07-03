@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.function.Consumer;
 
 import javax.swing.JOptionPane;
+import javax.swing.KeyStroke;
 
 /**
  * By: Jhonatan Mattana
@@ -30,6 +31,14 @@ public class Principal extends PrincipalBase{
 	}
 	
 	private void configurarBotoes() {
+		super.mntmBaixarLista.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F1, ActionEvent.ALT_MASK));
+		super.mntmExibirLista.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F2, ActionEvent.ALT_MASK));
+		super.mntmCadastrarCliente.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F3, ActionEvent.ALT_MASK));
+		super.mntmEditarCliente.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F4, ActionEvent.ALT_MASK));
+		super.mntmRealizarOramento.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F5, ActionEvent.ALT_MASK));
+		super.mntmExibirClientes.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F6, ActionEvent.ALT_MASK));
+		super.mntmExibirOramentos.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F7, ActionEvent.ALT_MASK));
+		
 		super.mntmBaixarLista.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				baixarLista();
@@ -82,6 +91,7 @@ public class Principal extends PrincipalBase{
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					tabbedPane.remove(wrapper);
+					instaciaUnicaOrcamento = null;
 				}
 			});
 			tabbedPane.addTab("Ver orçamentos", wrapper);
