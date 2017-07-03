@@ -169,7 +169,7 @@ public class PainelEditarClienteBase extends JPanel {
 		gbc_lblCdigo.gridy = 6;
 		panel.add(lblCdigo, gbc_lblCdigo);
 		
-		txtCep = new JFormattedTextField((setMascara("#####.###")));
+		txtCep = new JFormattedTextField((setMascara("#####-###")));
 		GridBagConstraints gbc_txtCep = new GridBagConstraints();
 		gbc_txtCep.anchor = GridBagConstraints.WEST;
 		gbc_txtCep.insets = new Insets(0, 0, 5, 0);

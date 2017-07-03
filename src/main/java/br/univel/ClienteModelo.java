@@ -53,9 +53,9 @@ public class ClienteModelo extends AbstractTableModel{
 		case 5:
 			return "Cidade";
 		case 6:
-			return "CPF";
-		case 7:
 			return "Cep";
+		case 7:
+			return "CPF";
 		}
 		return super.getColumnName(column);
 	}

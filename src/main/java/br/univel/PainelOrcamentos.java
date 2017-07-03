@@ -24,9 +24,9 @@ public class PainelOrcamentos extends PainelOrcamentoBase{
 			super();
 			iniciaTabelaP();
 			iniciarTabela();
-//			buscaDeClientes();
-//			buscaDeProdutos();
-//			configurarBotoes();
+			buscaDeClientes();
+			buscaDeProdutos();
+			configurarBotoes();
 	}
 
 	private void iniciaTabelaP() {
@@ -46,8 +46,11 @@ public class PainelOrcamentos extends PainelOrcamentoBase{
 	}
 	
 	private void buscaDeProdutos() {
-		ProdutoModelo model = new ProdutoModelo();
-		table_Produto.setModel(model);
+		ProdutoDao dao = new ProdutoDao();
+		List<Produto> lista = dao.selectFrom();
+		ProdutoModelo modelo;
+		modelo = new ProdutoModelo(lista);
+		table_Produto.setModel(modelo);
 
 		txtCodigoProduto.addKeyListener(new KeyAdapter() {
 			@Override
@@ -171,11 +174,56 @@ public class PainelOrcamentos extends PainelOrcamentoBase{
 				selececinarProduto();
 			}
 		});
+		super.btnSelecionarProduto.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				selecionarProduto();
+			}
+		});
+		super.btnSelecionarCliente.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				selecionarCliente();
+			}
+		});
+		super.btnRealizarOramento.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				realizarOrcamento();
+			}
+		});
 	}
 	
-	private void buscaDeClientes() {
+	protected void realizarOrcamento() {
+		int qtd = Integer.parseInt(txtQtdCliente.getText().trim());
+		int preco = Integer.parseInt(txtPrecoProduto.getText().trim());
 		
-		ClienteModelo model = new ClienteModelo();
+		int total = qtd * preco;
+		
+		String strTotal = String.valueOf(total);
+		txtVlrTotal.setText(strTotal);
+	}
+
+	protected void selecionarCliente() {
+		int indiceLinha = table_Cliente.getSelectedRow();
+		txtCodigoCliente.setText(table_Cliente.getValueAt(indiceLinha, 0).toString());
+		txtNomeCliente.setText(table_Cliente.getValueAt(indiceLinha, 1).toString());
+		txtQtdCliente.requestFocus();
+	}
+
+	protected void selecionarProduto() {
+		int indiceLinha = table_Produto.getSelectedRow();
+		txtCodigoProduto.setText(table_Produto.getValueAt(indiceLinha, 0).toString());
+		txtProdutoProduto.setText(table_Produto.getValueAt(indiceLinha, 1).toString());
+		txtPrecoProduto.setText(table_Produto.getValueAt(indiceLinha, 2).toString());
+	}
+
+	private void buscaDeClientes() {
+
+		ClienteDao dao = new ClienteDao();
+		List<Cliente> lista = dao.buscarTodos();
+		ClienteModelo model;
+		model = new ClienteModelo(lista);
 		table_Cliente.setModel(model);
 
 		txtCodigoCliente.addKeyListener(new KeyAdapter() {

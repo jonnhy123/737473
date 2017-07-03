@@ -13,6 +13,7 @@ import java.awt.Color;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JButton;
+import java.awt.Font;
 
 /**
  * By: Jhonatan Mattana
@@ -32,7 +33,7 @@ public class PainelOrcamentoBase extends JPanel {
 	protected JButton btnLimparCamposCliente;
 	protected JButton btnRealizarOramento;
 	protected JButton btnSalvar;
-	protected JButton btnVerOramentos;
+	protected JButton btnSelecionarCliente;
 	protected JPanel panel;
 	protected JScrollPane scrollPane_1;
 	protected JTable table_Cliente;
@@ -187,6 +188,7 @@ public class PainelOrcamentoBase extends JPanel {
 		txtQtdCliente.setColumns(10);
 		
 		JPanel panel_Tabela = new JPanel();
+		panel_Tabela.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Tabela de produtos", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(255, 0, 0)));
 		GridBagConstraints gbc_panel_Tabela = new GridBagConstraints();
 		gbc_panel_Tabela.insets = new Insets(0, 0, 5, 0);
 		gbc_panel_Tabela.fill = GridBagConstraints.BOTH;
@@ -211,6 +213,7 @@ public class PainelOrcamentoBase extends JPanel {
 		scrollPane.setViewportView(table_Produto);
 		
 		panel = new JPanel();
+		panel.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Tabela de clientes", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(255, 0, 0)));
 		GridBagConstraints gbc_panel = new GridBagConstraints();
 		gbc_panel.insets = new Insets(0, 0, 5, 0);
 		gbc_panel.fill = GridBagConstraints.BOTH;
@@ -257,6 +260,7 @@ public class PainelOrcamentoBase extends JPanel {
 		panel_VlrTotal.add(lblNewLabel, gbc_lblNewLabel);
 		
 		txtVlrTotal = new JTextField();
+		txtVlrTotal.setFont(new Font("Tahoma", Font.BOLD, 12));
 		GridBagConstraints gbc_txtVlrTotal = new GridBagConstraints();
 		gbc_txtVlrTotal.fill = GridBagConstraints.HORIZONTAL;
 		gbc_txtVlrTotal.gridx = 1;
@@ -286,7 +290,7 @@ public class PainelOrcamentoBase extends JPanel {
 		gbc_btnLimparCamposProduto.gridy = 0;
 		panel_CamposProdutos.add(btnLimparCamposProduto, gbc_btnLimparCamposProduto);
 		
-		btnSelecionarProduto = new JButton("Selecionar produto");
+		btnSelecionarProduto = new JButton("Selecionar produto (F2)");
 		GridBagConstraints gbc_btnSelecionarProduto = new GridBagConstraints();
 		gbc_btnSelecionarProduto.gridx = 1;
 		gbc_btnSelecionarProduto.gridy = 0;
@@ -328,11 +332,11 @@ public class PainelOrcamentoBase extends JPanel {
 		gbc_btnSalvar.gridy = 0;
 		panel_CamposClientes.add(btnSalvar, gbc_btnSalvar);
 		
-		btnVerOramentos = new JButton("Ver or\u00E7amentos");
-		GridBagConstraints gbc_btnVerOramentos = new GridBagConstraints();
-		gbc_btnVerOramentos.gridx = 3;
-		gbc_btnVerOramentos.gridy = 0;
-		panel_CamposClientes.add(btnVerOramentos, gbc_btnVerOramentos);
+		btnSelecionarCliente = new JButton("Selecionar cliente (F3)");
+		GridBagConstraints gbc_btnSelecionarCliente = new GridBagConstraints();
+		gbc_btnSelecionarCliente.gridx = 3;
+		gbc_btnSelecionarCliente.gridy = 0;
+		panel_CamposClientes.add(btnSelecionarCliente, gbc_btnSelecionarCliente);
 		
 	}
 

@@ -15,8 +15,6 @@ import javax.swing.plaf.basic.BasicTabbedPaneUI.TabbedPaneLayout;
  */
 public class PainelCadCliente extends PainelCadClientesBase{
 
-//	private ModeloCliente modeloCliente = new ModeloCliente();
-	
 	public PainelCadCliente() {
 		super();
 		configurarBotoes();
