@@ -14,3 +14,13 @@ cidade VARCHAR(100),
 cep VARCHAR(15),
 cpf VARCHAR(20)
 );
+
+CREATE TABLE orcamento (
+codProduto VARCHAR(10),
+codCliente VARCHAR(10),
+nomeProduto VARCHAR(100),
+nomeCliente VARCHAR(100),
+precoProduto VARCHAR(20),
+qtdProduto VARCHAR(10),
+vlrTotal VARCHAR(10)
+);
