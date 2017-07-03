@@ -16,6 +16,7 @@ import javax.swing.JOptionPane;
  */
 public class Principal extends PrincipalBase{
 
+	private static PainelExibirOrcamento instaciaUnicaOrcamento = null;
 	private static PainelExibirCliente instaciaUnicaClientes = null;
 	private static PainelCadCliente instanciaUnica_Cad = null;
 	private static PainelOrcamentos instanciaUnica_O = null;
@@ -71,7 +72,22 @@ public class Principal extends PrincipalBase{
 	}
 
 	protected void exibirOrcamento() {
-		
+		if (instaciaUnicaOrcamento == null) {
+			instaciaUnicaOrcamento = new PainelExibirOrcamento();
+			PainelWrapper wrapper = new PainelWrapper();
+			wrapper.setConteudo(instaciaUnicaOrcamento);
+			wrapper.setTitulo("Orçamentos de clientes");
+			
+			wrapper.setFecharPainel(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					tabbedPane.remove(wrapper);
+				}
+			});
+			tabbedPane.addTab("Ver orçamentos", wrapper);
+		}else{
+			JOptionPane.showMessageDialog(null, "Proibido dublicar aba.");
+		}
 	}
 
 	protected void exibirClientes() {

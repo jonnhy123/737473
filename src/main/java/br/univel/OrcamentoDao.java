@@ -30,13 +30,13 @@ public class OrcamentoDao {
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				Orcamento o = new Orcamento();
-				o.setCodProduto(rs.getString(0));
-				o.setCodCliente(rs.getString(1));
-				o.setNomeProduto(rs.getString(2));
-				o.setNomeCliente(rs.getString(3));
-				o.setPrecoProduto(rs.getString(4));
-				o.setQtdProduto(rs.getString(5));
-				o.setVlwTotal(rs.getString(6));
+				o.setCodProduto(rs.getString(1));
+				o.setCodCliente(rs.getString(2));
+				o.setNomeProduto(rs.getString(3));
+				o.setNomeCliente(rs.getString(4));
+				o.setPrecoProduto(rs.getString(5));
+				o.setQtdProduto(rs.getString(6));
+				o.setVlwTotal(rs.getString(7));
 				
 				lista.add(o);
 			}
