@@ -1,4 +1,4 @@
-package br.univel;
+package br.univel.panel.main;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,6 +9,12 @@ import java.awt.event.MouseListener;
 import java.util.List;
 
 import javax.swing.KeyStroke;
+
+import br.univel.ReportManager;
+import br.univel.classes.Orcamento;
+import br.univel.dao.OrcamentoDao;
+import br.univel.modelo.OrcamentoModelo;
+import br.univel.panel.base.PainelExibirOrcamentoBase;
 
 /**
  * By: Jhonatan Mattana

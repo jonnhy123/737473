@@ -1,10 +1,15 @@
-package br.univel;
+package br.univel.panel.main;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
+
+import br.univel.classes.Cliente;
+import br.univel.dao.ClienteDao;
+import br.univel.modelo.ClienteModelo;
+import br.univel.panel.base.PainelExibirClienteBase;
 
 /**
  * By: Jhonatan Mattana

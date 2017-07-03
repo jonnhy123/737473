@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.util.Locale;
 
+import br.univel.dao.Conexao;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;

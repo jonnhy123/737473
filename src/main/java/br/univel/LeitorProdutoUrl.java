@@ -13,6 +13,8 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import br.univel.classes.Produto;
+
 /**
  * By: Jhonatan Mattana
  * 30 de jun de 2017 - 21:34:27 

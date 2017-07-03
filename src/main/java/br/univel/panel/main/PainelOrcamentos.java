@@ -1,4 +1,4 @@
-package br.univel;
+package br.univel.panel.main;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,6 +9,17 @@ import java.util.List;
 import java.util.function.Consumer;
 
 import javax.swing.JOptionPane;
+
+import br.univel.classes.Cliente;
+import br.univel.classes.Orcamento;
+import br.univel.classes.Produto;
+import br.univel.dao.ClienteDao;
+import br.univel.dao.OrcamentoDao;
+import br.univel.dao.ProdutoDao;
+import br.univel.modelo.ClienteModelo;
+import br.univel.modelo.ProdutoModelo;
+import br.univel.panel.base.PainelEditarClienteBase;
+import br.univel.panel.base.PainelOrcamentoBase;
 
 /**
  * By: Jhonatan Mattana

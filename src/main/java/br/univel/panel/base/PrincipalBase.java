@@ -1,4 +1,4 @@
-package br.univel;
+package br.univel.panel.base;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;

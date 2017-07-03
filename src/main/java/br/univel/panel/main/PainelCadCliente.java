@@ -1,4 +1,4 @@
-package br.univel;
+package br.univel.panel.main;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,6 +8,10 @@ import java.util.List;
 
 import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicTabbedPaneUI.TabbedPaneLayout;
+
+import br.univel.classes.Cliente;
+import br.univel.dao.ClienteDao;
+import br.univel.panel.base.PainelCadClientesBase;
 
 /**
  * By: Jhonatan Mattana

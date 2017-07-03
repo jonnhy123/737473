@@ -1,10 +1,13 @@
-package br.univel;
+package br.univel.modelo;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
+
+import br.univel.classes.Produto;
+import br.univel.dao.ProdutoDao;
 
 /**
  * By: Jhonatan Mattana
@@ -18,7 +21,7 @@ public class ProdutoModelo extends AbstractTableModel{
 		this((List<Produto>)null);
 	}
 
-	void preencherResultado(List<Produto> resultado) {
+	public void preencherResultado(List<Produto> resultado) {
 		this.listaProdutoDeClasse = resultado;
 		fireTableDataChanged();
 	}

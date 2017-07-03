@@ -1,4 +1,4 @@
-package br.univel;
+package br.univel.panel.base;
 
 import javax.swing.JPanel;
 import java.awt.GridBagLayout;
@@ -18,7 +18,7 @@ import javax.swing.JTable;
 public class PainelExibirListaBase extends JPanel {
 	protected JTextField txtCodigo;
 	protected JTextField txtNome;
-	protected JTable table;
+	public JTable table;
 	protected JPanel panel;
 
 	/**

@@ -1,4 +1,4 @@
-package br.univel;
+package br.univel.panel.main;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -6,6 +6,12 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
+
+import br.univel.classes.Produto;
+import br.univel.dao.ProdutoDao;
+import br.univel.modelo.ProdutoModelo;
+import br.univel.panel.base.PainelEditarClienteBase;
+import br.univel.panel.base.PainelExibirListaBase;
 
 /**
  * By: Jhonatan Mattana

@@ -1,4 +1,4 @@
-package br.univel;
+package br.univel.panel.main;
 
 import javax.swing.JPanel;
 import java.awt.GridBagLayout;

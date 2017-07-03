@@ -1,4 +1,4 @@
-package br.univel;
+package br.univel.classes;
 
 import java.math.BigDecimal;
 

@@ -1,4 +1,4 @@
-package br.univel;
+package br.univel.executavel;
 
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
@@ -10,6 +10,19 @@ import java.util.function.Consumer;
 
 import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
+
+import br.univel.LeitorProdutoUrl;
+import br.univel.classes.Produto;
+import br.univel.dao.ProdutoDao;
+import br.univel.modelo.ProdutoModelo;
+import br.univel.panel.base.PrincipalBase;
+import br.univel.panel.main.PainelCadCliente;
+import br.univel.panel.main.PainelEditarCliente;
+import br.univel.panel.main.PainelExibirCliente;
+import br.univel.panel.main.PainelExibirLista;
+import br.univel.panel.main.PainelExibirOrcamento;
+import br.univel.panel.main.PainelOrcamentos;
+import br.univel.panel.main.PainelWrapper;
 
 /**
  * By: Jhonatan Mattana

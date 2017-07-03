@@ -1,9 +1,11 @@
-package br.univel;
+package br.univel.modelo;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
+
+import br.univel.classes.Orcamento;
 
 /**
  * By: Jhonatan Mattana
