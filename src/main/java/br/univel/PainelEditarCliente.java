@@ -40,6 +40,31 @@ public class PainelEditarCliente extends PainelEditarClienteBase{
 				excluirCliente();
 			}
 		});
+		btnSalvarDados.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				editarDados();
+			}
+		});
+	}
+
+	protected void editarDados() {
+		ClienteDao dao = new ClienteDao();
+		
+		Cliente c = new Cliente();
+		
+		c.setId(txtCodigo.getText().trim());
+		c.setNome(txtNome.getText().trim());
+		c.setBairo(txtBairro.getText().trim());
+		c.setEndereco(txtEndereco.getText().trim());
+		c.setEstado(txtEstado.getText().trim());
+		c.setCidade(txtCidade.getText().trim());
+		c.setCep(txtCep.getText().trim());
+		c.setCpf(txtCPF.getText().trim());
+		
+		dao.editar(c);
+		
+		JOptionPane.showMessageDialog(null, "Cliente editado.");
 	}
 
 	protected void excluirCliente() {

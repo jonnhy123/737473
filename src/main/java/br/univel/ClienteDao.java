@@ -14,11 +14,26 @@ import java.util.List;
 public class ClienteDao {
 
 	private Connection con;
-	
 	private static final String excluirCliente = "DELETE FROM cliente WHERE ID = ?";
 	private static final String adiconar = "INSERT INTO cliente (id,nome,bairro,endereco,"
 			+ "estado,cidade,cep,cpf) VALUES (?,?,?,?,?,?,?,?)";
 	private static final String buscarTodos = "SELECT * FROM cliente";
+	 
+	
+	
+	public void editar(Cliente c){
+		con = Conexao.getInstance().getConnection();
+		try {
+			String editar = "UPDATE cliente SET nome = '"+c.getNome()+"', bairro = '"+c.getBairo()+"',"
+					+"endereco = '"+c.getEndereco()+"', estado = '"+c.getEstado()+"', cidade = '"+c.getCidade()+"',"
+					+"cep = '"+c.getCep()+"', cpf = '"+c.getCpf()+"' WHERE id = '"+c.getId()+"'";
+			PreparedStatement ps = con.prepareStatement(editar);
+			
+			ps.execute();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 	
 	public List<Cliente> buscarTodos(){
 		List<Cliente> lista = new ArrayList<>();
