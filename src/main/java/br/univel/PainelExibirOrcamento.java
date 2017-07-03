@@ -1,5 +1,7 @@
 package br.univel;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
 
 /**
@@ -10,6 +12,32 @@ public class PainelExibirOrcamento extends PainelExibirOrcamentoBase{
 	
 	public PainelExibirOrcamento() {
 		iniciarTabela();
+		configurarBotoes();
+	}
+
+	private void configurarBotoes() {
+		super.btnGerarReltorio.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				gerarRelatorio();
+			}
+		});
+		super.btnImprimirRelatrio.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				imprimirRelatorio();
+			}
+		});
+	}
+
+	protected void imprimirRelatorio() {
+		ReportManager rm = new ReportManager();
+		rm.imprimir();
+	}
+
+	protected void gerarRelatorio() {
+		ReportManager rm = new ReportManager();
+		rm.exportar();
 	}
 
 	private void iniciarTabela() {
