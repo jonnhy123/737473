@@ -58,6 +58,14 @@ public class PainelOrcamentos extends PainelOrcamentoBase{
 			@Override
 			public void keyPressed(KeyEvent e) {
 
+				if (e.getKeyCode() == KeyEvent.VK_F2) {
+					try{
+						selecionarProduto();
+					}catch (Exception e1) {
+						JOptionPane.showMessageDialog(null, "Favor selecione um Cliente");
+					}
+				}
+				
 				switch (e.getKeyCode()) {
 				case KeyEvent.VK_ENTER:
 				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
@@ -173,19 +181,27 @@ public class PainelOrcamentos extends PainelOrcamentoBase{
 		super.btnRealizarOramento.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				selececinarProduto();
+				selecionarCliente();
 			}
 		});
 		super.btnSelecionarProduto.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				try{
 				selecionarProduto();
+				}catch (Exception e1) {
+					JOptionPane.showMessageDialog(null, "Favor selecione um Produto");
+				}
 			}
 		});
 		super.btnSelecionarCliente.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+			try{
 				selecionarCliente();
+			}catch (Exception e1) {
+				JOptionPane.showMessageDialog(null, "Favor selecione um Cliente");
+				}
 			}
 		});
 		super.btnRealizarOramento.addActionListener(new ActionListener() {
@@ -200,6 +216,20 @@ public class PainelOrcamentos extends PainelOrcamentoBase{
 				salvar();
 			}
 		});
+	}
+	
+	protected void selecionarCliente() {
+		int indiceLinha = table_Cliente.getSelectedRow();
+		txtCodigoCliente.setText(table_Cliente.getValueAt(indiceLinha, 0).toString());
+		txtNomeCliente.setText(table_Cliente.getValueAt(indiceLinha, 1).toString());
+		txtQtdCliente.requestFocus();
+	}
+
+	protected void selecionarProduto() {
+		int indiceLinha = table_Produto.getSelectedRow();
+		txtCodigoProduto.setText(table_Produto.getValueAt(indiceLinha, 0).toString());
+		txtProdutoProduto.setText(table_Produto.getValueAt(indiceLinha, 1).toString());
+		txtPrecoProduto.setText(table_Produto.getValueAt(indiceLinha, 2).toString());
 	}
 	
 	protected void salvar() {
@@ -236,20 +266,6 @@ public class PainelOrcamentos extends PainelOrcamentoBase{
 		JOptionPane.showMessageDialog(null, "Orçamento realizado, confira o valor total no final da tela.");
 	}
 
-	protected void selecionarCliente() {
-		int indiceLinha = table_Cliente.getSelectedRow();
-		txtCodigoCliente.setText(table_Cliente.getValueAt(indiceLinha, 0).toString());
-		txtNomeCliente.setText(table_Cliente.getValueAt(indiceLinha, 1).toString());
-		txtQtdCliente.requestFocus();
-	}
-
-	protected void selecionarProduto() {
-		int indiceLinha = table_Produto.getSelectedRow();
-		txtCodigoProduto.setText(table_Produto.getValueAt(indiceLinha, 0).toString());
-		txtProdutoProduto.setText(table_Produto.getValueAt(indiceLinha, 1).toString());
-		txtPrecoProduto.setText(table_Produto.getValueAt(indiceLinha, 2).toString());
-	}
-
 	private void buscaDeClientes() {
 
 		ClienteDao dao = new ClienteDao();
@@ -257,11 +273,19 @@ public class PainelOrcamentos extends PainelOrcamentoBase{
 		ClienteModelo model;
 		model = new ClienteModelo(lista);
 		table_Cliente.setModel(model);
-
+		
 		txtCodigoCliente.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
 
+				if (e.getKeyCode() == KeyEvent.VK_F3) {
+					try{
+						selecionarCliente();
+					}catch (Exception e1) {
+						JOptionPane.showMessageDialog(null, "Favor selecione um Cliente");
+					}
+				}
+				
 				switch (e.getKeyCode()) {
 				case KeyEvent.VK_ENTER:
 				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
@@ -341,10 +365,6 @@ public class PainelOrcamentos extends PainelOrcamentoBase{
 		List<Cliente> lista = new ArrayList<Cliente>();
 		lista = dao.buscarPorNome(palavra);
 		return lista;
-	}
-
-	protected void selececinarProduto() {
-		
 	}
 
 	protected void limparCamposC() {
