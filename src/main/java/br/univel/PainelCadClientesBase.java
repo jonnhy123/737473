@@ -28,7 +28,6 @@ public class PainelCadClientesBase extends JPanel {
 	protected JTextField txtCodigo;
 	protected JButton btnSalvarDados;
 	protected JButton btnNovoCliente;
-	protected JButton btnVerClientes;
 	protected JTextField txtEstado;
 	
 	//Formatar campos de texto
@@ -215,9 +214,9 @@ public class PainelCadClientesBase extends JPanel {
 		gbc_panel_1.gridy = 1;
 		add(panel_1, gbc_panel_1);
 		GridBagLayout gbl_panel_1 = new GridBagLayout();
-		gbl_panel_1.columnWidths = new int[]{0, 0, 0, 0};
+		gbl_panel_1.columnWidths = new int[]{0, 0, 0};
 		gbl_panel_1.rowHeights = new int[]{0, 0};
-		gbl_panel_1.columnWeights = new double[]{1.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_panel_1.columnWeights = new double[]{1.0, 0.0, Double.MIN_VALUE};
 		gbl_panel_1.rowWeights = new double[]{0.0, Double.MIN_VALUE};
 		panel_1.setLayout(gbl_panel_1);
 		
@@ -235,12 +234,6 @@ public class PainelCadClientesBase extends JPanel {
 		gbc_btnNovoCliente.gridx = 1;
 		gbc_btnNovoCliente.gridy = 0;
 		panel_1.add(btnNovoCliente, gbc_btnNovoCliente);
-		
-		btnVerClientes = new JButton("Ver clientes");
-		GridBagConstraints gbc_btnVerClientes = new GridBagConstraints();
-		gbc_btnVerClientes.gridx = 2;
-		gbc_btnVerClientes.gridy = 0;
-		panel_1.add(btnVerClientes, gbc_btnVerClientes);
 
 	}
 

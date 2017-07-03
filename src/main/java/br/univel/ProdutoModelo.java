@@ -24,7 +24,7 @@ public class ProdutoModelo extends AbstractTableModel{
 	}
 	
 	public ProdutoModelo(List<Produto> listaProdutoContrutor) {
-			listaProdutoDeClasse = listaProdutoContrutor;
+			this.listaProdutoDeClasse = listaProdutoContrutor;
 			fireTableDataChanged();
 	}
 

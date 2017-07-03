@@ -31,9 +31,8 @@ public class PainelEditarClienteBase extends JPanel {
 	protected JButton btnSalvarDados;
 	protected JButton btnNovoCliente;
 	protected JButton btnExcluirClientes;
-	protected JTable table;
-	protected JButton btnVerClientes;
 	protected JTextField txtEstado;
+	protected JTable table;
 	
 	//Formatar campos de texto
 	private MaskFormatter setMascara(String mascara){
@@ -220,9 +219,9 @@ public class PainelEditarClienteBase extends JPanel {
 		gbc_panel_1.gridy = 1;
 		add(panel_1, gbc_panel_1);
 		GridBagLayout gbl_panel_1 = new GridBagLayout();
-		gbl_panel_1.columnWidths = new int[]{0, 0, 0, 0, 0};
+		gbl_panel_1.columnWidths = new int[]{0, 0, 0, 0};
 		gbl_panel_1.rowHeights = new int[]{0, 0};
-		gbl_panel_1.columnWeights = new double[]{1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_panel_1.columnWeights = new double[]{1.0, 0.0, 0.0, Double.MIN_VALUE};
 		gbl_panel_1.rowWeights = new double[]{0.0, Double.MIN_VALUE};
 		panel_1.setLayout(gbl_panel_1);
 		
@@ -247,12 +246,6 @@ public class PainelEditarClienteBase extends JPanel {
 		gbc_btnExcluirClientes.gridx = 2;
 		gbc_btnExcluirClientes.gridy = 0;
 		panel_1.add(btnExcluirClientes, gbc_btnExcluirClientes);
-		
-		btnVerClientes = new JButton("Ver clientes");
-		GridBagConstraints gbc_btnVerClientes = new GridBagConstraints();
-		gbc_btnVerClientes.gridx = 3;
-		gbc_btnVerClientes.gridy = 0;
-		panel_1.add(btnVerClientes, gbc_btnVerClientes);
 		
 		JPanel panel_2 = new JPanel();
 		GridBagConstraints gbc_panel_2 = new GridBagConstraints();

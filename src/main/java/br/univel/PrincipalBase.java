@@ -29,6 +29,7 @@ public class PrincipalBase extends JFrame {
 	protected JMenuItem mntmEditarCliente;
 	protected JMenuItem mntmRealizarOramento;
 	protected JTabbedPane tabbedPane;
+	protected JMenuItem mntmExibirClientes;
 
 	/**
 	 * Create the frame.
@@ -58,6 +59,9 @@ public class PrincipalBase extends JFrame {
 		
 		mntmRealizarOramento = new JMenuItem("Realizar Or\u00E7amento");
 		mnMenu.add(mntmRealizarOramento);
+		
+		mntmExibirClientes = new JMenuItem("Exibir Clientes");
+		mnMenu.add(mntmExibirClientes);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);

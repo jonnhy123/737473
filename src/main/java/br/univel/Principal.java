@@ -16,10 +16,11 @@ import javax.swing.JOptionPane;
  */
 public class Principal extends PrincipalBase{
 
+	private static PainelExibirCliente instaciaUnicaClientes = null;
 	private static PainelCadCliente instanciaUnica_Cad = null;
 	private static PainelOrcamentos instanciaUnica_O = null;
 	private static PainelExibirLista instanciaUnica_Exibir = null;
-	private static PainelEditarClienteBase instanciaUnica_Editar = null;
+	private static PainelEditarCliente instanciaUnica_Editar = null;
 	
 	public Principal() {
 		super();
@@ -55,11 +56,37 @@ public class Principal extends PrincipalBase{
 				editarCliente();
 			}
 		});
+		super.mntmExibirClientes.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				exibirClientes();
+			}
+		} );
 	}
-	
+
+	protected void exibirClientes() {
+		if (instaciaUnicaClientes == null) {
+			instaciaUnicaClientes = new PainelExibirCliente();
+			final PainelWrapper wrapper = new PainelWrapper();
+			wrapper.setConteudo(instaciaUnicaClientes);
+			wrapper.setTitulo("Buscar clientes");
+			
+			wrapper.setFecharPainel(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					tabbedPane.remove(wrapper);
+					instaciaUnicaClientes = null;
+				}
+			});
+			tabbedPane.addTab("Ver clientes", wrapper);
+		}else{
+			JOptionPane.showMessageDialog(null, "Proibido dublicar aba.");
+		}
+	}
+
 	protected void editarCliente() {
 		if (instanciaUnica_Editar == null) {
-			instanciaUnica_Editar = new PainelEditarClienteBase();
+			instanciaUnica_Editar = new PainelEditarCliente();
 			final PainelWrapper wrapper = new PainelWrapper();
 			wrapper.setConteudo(instanciaUnica_Editar);
 			wrapper.setTitulo("Editar cliente");
@@ -72,6 +99,8 @@ public class Principal extends PrincipalBase{
 				}
 			});
 			tabbedPane.addTab("Editar clientes", wrapper);
+		}else{
+			JOptionPane.showMessageDialog(null, "Proibido dublicar aba.");
 		}
 	}
 
@@ -125,7 +154,7 @@ public class Principal extends PrincipalBase{
 			instanciaUnica_Exibir.table.setModel(modeloProduto);
 			final PainelWrapper wrapper = new PainelWrapper();
 			wrapper.setConteudo(instanciaUnica_Exibir);
-			wrapper.setTitulo("Buscar clientes");
+			wrapper.setTitulo("Buscar produtos");
 			
 			wrapper.setFecharPainel(new ActionListener() {
 				@Override
@@ -134,7 +163,7 @@ public class Principal extends PrincipalBase{
 					instanciaUnica_Exibir = null;
 				}
 			});
-			tabbedPane.addTab("Busca de clientes", wrapper);
+			tabbedPane.addTab("Busca de produto", wrapper);
 		}else{
 			JOptionPane.showMessageDialog(null, "Proibido dublicar aba.");
 		}
@@ -146,7 +175,6 @@ public class Principal extends PrincipalBase{
 				final String url = "http://www.master10.com.py/lista-txt/donwload";
 				LeitorProdutoUrl lpu = new LeitorProdutoUrl();
 				List<Produto> listaProduto = lpu.lerProdutos(url);
-				modeloProduto = new ProdutoModelo(listaProduto);
 				modeloProduto = new ProdutoModelo(listaProduto);
 
 				modeloProduto.salvar(listaProduto);

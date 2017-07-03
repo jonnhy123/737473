@@ -1,51 +1,36 @@
 package br.univel;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 
-import javax.swing.JOptionPane;
-
 /**
  * By: Jhonatan Mattana
- * 2 de jul de 2017 - 05:39:22 
+ * 2 de jul de 2017 - 19:11:52 
  */
-public class PainelEditarCliente extends PainelEditarClienteBase{
-
+public class PainelExibirCliente extends PainelExibirClienteBase{
+	
 	private Consumer<Cliente> consumerOnOk;
 	private Runnable runnableOnCancel;
-	private ClienteModelo modelo;
 	
-	public PainelEditarCliente() {
+	public PainelExibirCliente() {
 		super();
 		configurarBusca();
-		configurarBotoes();
 		iniciarTabela();
-	}
-
-	private void configurarBotoes() {
-		btnNovoCliente.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				limparCampos();
-			}
-		});
-	}
-
-	protected void limparCampos() {
-		
 	}
 	
 	private void iniciarTabela() {
+	
+		ClienteModelo modelo;
 		ClienteDao dao = new ClienteDao();
 		List<Cliente> lista = dao.buscarTodos();
 		modelo = new ClienteModelo(lista);
 		table.setModel(modelo);
+		
 	}
+
 	public void setOnOk(Consumer<Cliente> c) {
 		this.consumerOnOk = c;
 	}
@@ -72,8 +57,8 @@ public class PainelEditarCliente extends PainelEditarClienteBase{
 					txtCodigo.transferFocus();
 					return;
 				case KeyEvent.VK_ESCAPE:
-					if (PainelEditarCliente.this.runnableOnCancel != null) {
-						PainelEditarCliente.this.runnableOnCancel.run();
+					if (PainelExibirCliente.this.runnableOnCancel != null) {
+						PainelExibirCliente.this.runnableOnCancel.run();
 					}
 					return;
 					default:
@@ -97,8 +82,8 @@ public class PainelEditarCliente extends PainelEditarClienteBase{
 					txtNome.transferFocus();
 					return;
 				case KeyEvent.VK_ESCAPE:
-					if (PainelEditarCliente.this.runnableOnCancel != null) {
-						PainelEditarCliente.this.runnableOnCancel.run();
+					if (PainelExibirCliente.this.runnableOnCancel != null) {
+						PainelExibirCliente.this.runnableOnCancel.run();
 					}
 					return;
 					default:
@@ -126,13 +111,13 @@ public class PainelEditarCliente extends PainelEditarClienteBase{
 						if (cliente == null) {
 							return;
 						}
-						PainelEditarCliente.this.consumerOnOk.accept(cliente);
+						PainelExibirCliente.this.consumerOnOk.accept(cliente);
 					}
 				}
 				
 				if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
-					if (PainelEditarCliente.this.runnableOnCancel != null) {
-						PainelEditarCliente.this.runnableOnCancel.run();
+					if (PainelExibirCliente.this.runnableOnCancel != null) {
+						PainelExibirCliente.this.runnableOnCancel.run();
 					}
 				}
 			}
@@ -167,5 +152,4 @@ public class PainelEditarCliente extends PainelEditarClienteBase{
 		lista = dao.buscarPorNome(palavra);
 		return lista;
 	}
-
 }
