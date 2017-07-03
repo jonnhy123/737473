@@ -62,6 +62,16 @@ public class Principal extends PrincipalBase{
 				exibirClientes();
 			}
 		} );
+		super.mntmExibirOramentos.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				exibirOrcamento();
+			}
+		});
+	}
+
+	protected void exibirOrcamento() {
+		
 	}
 
 	protected void exibirClientes() {

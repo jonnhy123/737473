@@ -217,6 +217,11 @@ public class PainelOrcamentos extends PainelOrcamentoBase{
 		
 		lista.add(o);
 		dao.salvar(lista);
+		
+		limparCamposC();
+		limparCamposP();
+		
+		JOptionPane.showMessageDialog(null, "Orçamento salvo.");
 	}
 
 	protected void realizarOrcamento() {
