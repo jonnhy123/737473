@@ -76,8 +76,7 @@ public class ClienteDao {
 		} catch (SQLException e) {
 			System.out.println("Erro no SQL adicionar.\n" + e);
 		}
-
-		}
+	}
 
 	public List<Cliente> buscarPorId(String palavra) {
 		con = Conexao.getInstance().getConnection();

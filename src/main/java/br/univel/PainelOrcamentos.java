@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 
+import javax.swing.JOptionPane;
+
 /**
  * By: Jhonatan Mattana
  * 2 de jul de 2017 - 01:48:09 
@@ -192,8 +194,31 @@ public class PainelOrcamentos extends PainelOrcamentoBase{
 				realizarOrcamento();
 			}
 		});
+		super.btnSalvar.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				salvar();
+			}
+		});
 	}
 	
+	protected void salvar() {
+		OrcamentoDao dao = new OrcamentoDao(); 
+		List<Orcamento> lista = new ArrayList<>();
+		Orcamento o = new Orcamento();
+		
+		o.setCodProduto(txtCodigoCliente.getText().trim());
+		o.setNomeProduto(txtProdutoProduto.getText().trim());
+		o.setPrecoProduto(txtPrecoProduto.getText().trim());
+		o.setQtdProduto(txtQtdCliente.getText().trim());
+		o.setCodCliente(txtCodigoCliente.getText().trim());
+		o.setNomeCliente(txtNomeCliente.getText().trim());
+		o.setVlwTotal(txtVlrTotal.getText().trim());
+		
+		lista.add(o);
+		dao.salvar(lista);
+	}
+
 	protected void realizarOrcamento() {
 		int qtd = Integer.parseInt(txtQtdCliente.getText().trim());
 		int preco = Integer.parseInt(txtPrecoProduto.getText().trim());
@@ -202,6 +227,8 @@ public class PainelOrcamentos extends PainelOrcamentoBase{
 		
 		String strTotal = String.valueOf(total);
 		txtVlrTotal.setText(strTotal);
+		
+		JOptionPane.showMessageDialog(null, "Orçamento realizado, confira o valor total no final da tela.");
 	}
 
 	protected void selecionarCliente() {
