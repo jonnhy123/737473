@@ -34,10 +34,29 @@ public class PainelEditarCliente extends PainelEditarClienteBase{
 				limparCampos();
 			}
 		});
+		btnExcluirClientes.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				excluirCliente();
+			}
+		});
+	}
+
+	protected void excluirCliente() {
+		ClienteDao dao = new ClienteDao();
+		dao.excluirCliente(txtCodigo.getText().trim());
+		iniciarTabela();
 	}
 
 	protected void limparCampos() {
-		
+		txtCodigo.setText("");
+		txtNome.setText("");
+		txtBairro.setText("");
+		txtEndereco.setText("");
+		txtEstado.setText("");
+		txtCidade.setText("");
+		txtCPF.setText("");
+		txtCep.setText("");
 	}
 	
 	private void iniciarTabela() {

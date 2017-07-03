@@ -37,7 +37,7 @@ public class PrincipalBase extends JFrame {
 	public PrincipalBase() {
 		setTitle("Tela Principal");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1000, 610);
+		setBounds(100, 100, 1100, 650);
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);

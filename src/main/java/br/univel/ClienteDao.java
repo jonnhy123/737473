@@ -15,6 +15,7 @@ public class ClienteDao {
 
 	private Connection con;
 	
+	private static final String excluirCliente = "DELETE FROM cliente WHERE ID = ?";
 	private static final String adiconar = "INSERT INTO cliente (id,nome,bairro,endereco,"
 			+ "estado,cidade,cep,cpf) VALUES (?,?,?,?,?,?,?,?)";
 	private static final String buscarTodos = "SELECT * FROM cliente";
@@ -133,5 +134,17 @@ public class ClienteDao {
 		return lista;
 	}
 
+	public void excluirCliente(String intValorCampoDeTexto) {
+		con = Conexao.getInstance().getConnection();
+		
+		try {
+			String id = intValorCampoDeTexto;
+			PreparedStatement ps = con.prepareStatement(excluirCliente);
+			ps.setString(1, id);
+			ps.execute();
+		} catch (SQLException e) {
+			System.out.println("Erro no SQL excluirItem.\n" + e);
+		}
+	}
 
 }

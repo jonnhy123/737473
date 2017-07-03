@@ -24,10 +24,18 @@ public class PainelOrcamentoBase extends JPanel {
 	protected JTextField txtPrecoProduto;
 	protected JTextField txtCodigoCliente;
 	protected JTextField txtNomeCliente;
-	protected JTextField txtApagar;
 	protected JTextField txtQtdCliente;
-	protected JTable tabela;
+	protected JTable table_Produto;
 	protected JTextField txtVlrTotal;
+	protected JButton btnLimparCamposProduto;
+	protected JButton btnSelecionarProduto;
+	protected JButton btnLimparCamposCliente;
+	protected JButton btnRealizarOramento;
+	protected JButton btnSalvar;
+	protected JButton btnVerOramentos;
+	protected JPanel panel;
+	protected JScrollPane scrollPane_1;
+	protected JTable table_Cliente;
 
 	/**
 	 * Create the panel.
@@ -36,9 +44,9 @@ public class PainelOrcamentoBase extends JPanel {
 		setBorder(new EmptyBorder(5, 5, 5, 5));
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0};
-		gridBagLayout.rowHeights = new int[]{0, 0, 104, 0, 177, 0, 0};
+		gridBagLayout.rowHeights = new int[]{0, 0, 104, 0, 106, 0, 0, 0};
 		gridBagLayout.columnWeights = new double[]{1.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
 		JPanel panel_Produtos = new JPanel();
@@ -85,6 +93,7 @@ public class PainelOrcamentoBase extends JPanel {
 		panel_Produtos.add(lblProduto, gbc_lblProduto);
 		
 		txtProdutoProduto = new JTextField();
+		txtProdutoProduto.setEditable(false);
 		GridBagConstraints gbc_txtProdutoProduto = new GridBagConstraints();
 		gbc_txtProdutoProduto.anchor = GridBagConstraints.WEST;
 		gbc_txtProdutoProduto.insets = new Insets(0, 0, 5, 0);
@@ -102,6 +111,7 @@ public class PainelOrcamentoBase extends JPanel {
 		panel_Produtos.add(lblPreo, gbc_lblPreo);
 		
 		txtPrecoProduto = new JTextField();
+		txtPrecoProduto.setEditable(false);
 		GridBagConstraints gbc_txtPrecoProduto = new GridBagConstraints();
 		gbc_txtPrecoProduto.anchor = GridBagConstraints.WEST;
 		gbc_txtPrecoProduto.insets = new Insets(0, 0, 5, 0);
@@ -151,6 +161,7 @@ public class PainelOrcamentoBase extends JPanel {
 		panel_Clientes.add(lblNome, gbc_lblNome);
 		
 		txtNomeCliente = new JTextField();
+		txtNomeCliente.setEditable(false);
 		GridBagConstraints gbc_txtNomeCliente = new GridBagConstraints();
 		gbc_txtNomeCliente.anchor = GridBagConstraints.WEST;
 		gbc_txtNomeCliente.insets = new Insets(0, 0, 5, 0);
@@ -184,7 +195,7 @@ public class PainelOrcamentoBase extends JPanel {
 		add(panel_Tabela, gbc_panel_Tabela);
 		GridBagLayout gbl_panel_Tabela = new GridBagLayout();
 		gbl_panel_Tabela.columnWidths = new int[]{0, 0};
-		gbl_panel_Tabela.rowHeights = new int[]{111, 0};
+		gbl_panel_Tabela.rowHeights = new int[]{115, 0};
 		gbl_panel_Tabela.columnWeights = new double[]{1.0, Double.MIN_VALUE};
 		gbl_panel_Tabela.rowWeights = new double[]{1.0, Double.MIN_VALUE};
 		panel_Tabela.setLayout(gbl_panel_Tabela);
@@ -196,15 +207,38 @@ public class PainelOrcamentoBase extends JPanel {
 		gbc_scrollPane.gridy = 0;
 		panel_Tabela.add(scrollPane, gbc_scrollPane);
 		
-		tabela = new JTable();
-		scrollPane.setViewportView(tabela);
+		table_Produto = new JTable();
+		scrollPane.setViewportView(table_Produto);
+		
+		panel = new JPanel();
+		GridBagConstraints gbc_panel = new GridBagConstraints();
+		gbc_panel.insets = new Insets(0, 0, 5, 0);
+		gbc_panel.fill = GridBagConstraints.BOTH;
+		gbc_panel.gridx = 0;
+		gbc_panel.gridy = 5;
+		add(panel, gbc_panel);
+		GridBagLayout gbl_panel = new GridBagLayout();
+		gbl_panel.columnWidths = new int[]{0, 0};
+		gbl_panel.rowHeights = new int[]{0, 0};
+		gbl_panel.columnWeights = new double[]{1.0, Double.MIN_VALUE};
+		gbl_panel.rowWeights = new double[]{1.0, Double.MIN_VALUE};
+		panel.setLayout(gbl_panel);
+		
+		scrollPane_1 = new JScrollPane();
+		GridBagConstraints gbc_scrollPane_1 = new GridBagConstraints();
+		gbc_scrollPane_1.fill = GridBagConstraints.BOTH;
+		gbc_scrollPane_1.gridx = 0;
+		gbc_scrollPane_1.gridy = 0;
+		panel.add(scrollPane_1, gbc_scrollPane_1);
+		
+		table_Cliente = new JTable();
+		scrollPane_1.setViewportView(table_Cliente);
 		
 		JPanel panel_VlrTotal = new JPanel();
 		GridBagConstraints gbc_panel_VlrTotal = new GridBagConstraints();
-		gbc_panel_VlrTotal.insets = new Insets(0, 0, 5, 0);
 		gbc_panel_VlrTotal.fill = GridBagConstraints.BOTH;
 		gbc_panel_VlrTotal.gridx = 0;
-		gbc_panel_VlrTotal.gridy = 5;
+		gbc_panel_VlrTotal.gridy = 6;
 		add(panel_VlrTotal, gbc_panel_VlrTotal);
 		GridBagLayout gbl_panel_VlrTotal = new GridBagLayout();
 		gbl_panel_VlrTotal.columnWidths = new int[]{0, 0, 0};
@@ -245,14 +279,14 @@ public class PainelOrcamentoBase extends JPanel {
 		gbl_panel_CamposProdutos.rowWeights = new double[]{0.0, Double.MIN_VALUE};
 		panel_CamposProdutos.setLayout(gbl_panel_CamposProdutos);
 		
-		JButton btnLimparCampos = new JButton("Limpar campos");
-		GridBagConstraints gbc_btnLimparCampos = new GridBagConstraints();
-		gbc_btnLimparCampos.insets = new Insets(0, 0, 0, 5);
-		gbc_btnLimparCampos.gridx = 0;
-		gbc_btnLimparCampos.gridy = 0;
-		panel_CamposProdutos.add(btnLimparCampos, gbc_btnLimparCampos);
+		btnLimparCamposProduto = new JButton("Limpar campos");
+		GridBagConstraints gbc_btnLimparCamposProduto = new GridBagConstraints();
+		gbc_btnLimparCamposProduto.insets = new Insets(0, 0, 0, 5);
+		gbc_btnLimparCamposProduto.gridx = 0;
+		gbc_btnLimparCamposProduto.gridy = 0;
+		panel_CamposProdutos.add(btnLimparCamposProduto, gbc_btnLimparCamposProduto);
 		
-		JButton btnSelecionarProduto = new JButton("Selecionar produto");
+		btnSelecionarProduto = new JButton("Selecionar produto");
 		GridBagConstraints gbc_btnSelecionarProduto = new GridBagConstraints();
 		gbc_btnSelecionarProduto.gridx = 1;
 		gbc_btnSelecionarProduto.gridy = 0;
@@ -260,6 +294,7 @@ public class PainelOrcamentoBase extends JPanel {
 		
 		JPanel panel_CamposClientes = new JPanel();
 		GridBagConstraints gbc_panel_CamposClientes = new GridBagConstraints();
+		gbc_panel_CamposClientes.insets = new Insets(0, 0, 5, 0);
 		gbc_panel_CamposClientes.fill = GridBagConstraints.BOTH;
 		gbc_panel_CamposClientes.gridx = 0;
 		gbc_panel_CamposClientes.gridy = 3;
@@ -271,29 +306,29 @@ public class PainelOrcamentoBase extends JPanel {
 		gbl_panel_CamposClientes.rowWeights = new double[]{0.0, Double.MIN_VALUE};
 		panel_CamposClientes.setLayout(gbl_panel_CamposClientes);
 		
-		JButton btnLimparCampos_1 = new JButton("Limpar campos");
-		GridBagConstraints gbc_btnLimparCampos_1 = new GridBagConstraints();
-		gbc_btnLimparCampos_1.anchor = GridBagConstraints.EAST;
-		gbc_btnLimparCampos_1.insets = new Insets(0, 0, 0, 5);
-		gbc_btnLimparCampos_1.gridx = 0;
-		gbc_btnLimparCampos_1.gridy = 0;
-		panel_CamposClientes.add(btnLimparCampos_1, gbc_btnLimparCampos_1);
+		btnLimparCamposCliente = new JButton("Limpar campos");
+		GridBagConstraints gbc_btnLimparCamposCliente = new GridBagConstraints();
+		gbc_btnLimparCamposCliente.anchor = GridBagConstraints.EAST;
+		gbc_btnLimparCamposCliente.insets = new Insets(0, 0, 0, 5);
+		gbc_btnLimparCamposCliente.gridx = 0;
+		gbc_btnLimparCamposCliente.gridy = 0;
+		panel_CamposClientes.add(btnLimparCamposCliente, gbc_btnLimparCamposCliente);
 		
-		JButton btnRealizarOramento = new JButton("Realizar or\u00E7amento");
+		btnRealizarOramento = new JButton("Realizar or\u00E7amento");
 		GridBagConstraints gbc_btnRealizarOramento = new GridBagConstraints();
 		gbc_btnRealizarOramento.insets = new Insets(0, 0, 0, 5);
 		gbc_btnRealizarOramento.gridx = 1;
 		gbc_btnRealizarOramento.gridy = 0;
 		panel_CamposClientes.add(btnRealizarOramento, gbc_btnRealizarOramento);
 		
-		JButton btnSalvar = new JButton("Salvar");
+		btnSalvar = new JButton("Salvar");
 		GridBagConstraints gbc_btnSalvar = new GridBagConstraints();
 		gbc_btnSalvar.insets = new Insets(0, 0, 0, 5);
 		gbc_btnSalvar.gridx = 2;
 		gbc_btnSalvar.gridy = 0;
 		panel_CamposClientes.add(btnSalvar, gbc_btnSalvar);
 		
-		JButton btnVerOramentos = new JButton("Ver or\u00E7amentos");
+		btnVerOramentos = new JButton("Ver or\u00E7amentos");
 		GridBagConstraints gbc_btnVerOramentos = new GridBagConstraints();
 		gbc_btnVerOramentos.gridx = 3;
 		gbc_btnVerOramentos.gridy = 0;
